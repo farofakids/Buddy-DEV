@@ -1,0 +1,19 @@
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.exe.config
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.exe
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.pdb
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\EloBuddy.dll
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\EloBuddy.SDK.dll
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\SharpDX.dll
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\SharpDX.Direct3D9.dll
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.exe
+c:\users\bruno\documents\visual studio 2012\Projects\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.pdb
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.exe.config
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.exe
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.pdb
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.exe
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Damage Indicator.pdb
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache
