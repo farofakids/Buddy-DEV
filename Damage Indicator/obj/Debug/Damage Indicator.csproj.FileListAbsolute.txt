@@ -17,3 +17,11 @@ C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Dam
 C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Bruno\Desktop\Buddy-DEV\Damage Indicator\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Desktop\Damage Indicator\bin\Debug\Damage Indicator.exe.config
+C:\Users\Bruno\Desktop\Damage Indicator\obj\Debug\Damage Indicator.exe
+C:\Users\Bruno\Desktop\Damage Indicator\obj\Debug\Damage Indicator.pdb
+C:\Users\Bruno\Desktop\Damage Indicator\bin\Debug\Damage Indicator.exe
+C:\Users\Bruno\Desktop\Damage Indicator\bin\Debug\Damage Indicator.pdb
+C:\Users\Bruno\Desktop\Damage Indicator\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache

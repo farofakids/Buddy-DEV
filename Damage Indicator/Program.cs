@@ -25,6 +25,15 @@ namespace Damage_Indicator
         public static Spell.Active E = new Spell.Active(SpellSlot.E);
         public static Spell.Active R = new Spell.Active(SpellSlot.R);
 
+        public static Spell.Targeted IGNITE = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 550);
+
+        public static Item Hydra = new Item((int)ItemId.Ravenous_Hydra_Melee_Only, 400);
+        public static Item Tiamat = new Item((int)ItemId.Tiamat_Melee_Only, 400);
+        public static Item BOTRK = new Item((int)ItemId.Blade_of_the_Ruined_King, 450);
+        public static Item Cutl = new Item((int)ItemId.Bilgewater_Cutlass, 450);
+        public static Item Sheen = new Item((int)ItemId.Sheen);
+        public static Item TriForce = new Item((int)ItemId.Trinity_Force);
+
         private static bool Dind
         {
             get { return menu["Dind"].Cast<CheckBox>().CurrentValue; }
@@ -75,19 +84,6 @@ namespace Damage_Indicator
             }
         }
 
-        private static Item HasHydra()
-        {
-
-            var hydraId =
-                ObjectManager.Player.InventoryItems.FirstOrDefault(
-                    it => it.Id == ItemId.Ravenous_Hydra_Melee_Only || it.Id == ItemId.Tiamat_Melee_Only);
-            if (hydraId != null)
-            {
-                return new Item(hydraId.Id, 300);
-            }
-            return null;
-        }
-
         private static void OnMenuLoad()
         {
             menu = MainMenu.AddMenu("Damage Indicator", "Damage Indicator");
@@ -98,9 +94,15 @@ namespace Damage_Indicator
                           "Spells Damages" + Environment.NewLine +
                           "Auto Attack Damages" + Environment.NewLine +
                           Environment.NewLine +
+                          "SUMMONERS:" + Environment.NewLine +
+                          "Ignite" + Environment.NewLine + Environment.NewLine +
                           "ITEMS:" + Environment.NewLine +
                           "Ravenous Hydra" + Environment.NewLine +
-                          "Ignite SOON" + Environment.NewLine + Environment.NewLine +
+                          "Tiamat" + Environment.NewLine +
+                          "Blade of the Ruined King" + Environment.NewLine +
+                          "Bilgewater Cutlass" + Environment.NewLine +
+                          "Sheen" + Environment.NewLine +
+                          "TriForce" + Environment.NewLine + Environment.NewLine +
                           "Not work 100% with champions, containing passive in their abilities" + Environment.NewLine +
                           "only use to have a base of their damage" + Environment.NewLine);
         }
@@ -111,7 +113,16 @@ namespace Damage_Indicator
             {
                 float damage = 0;
                 damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy);
-                if (HasHydra() != null) damage = damage + _Player.GetAutoAttackDamage(enemy) * 0.7f;
+
+                if (Hydra.IsReady() && Hydra.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
+                if (Tiamat.IsReady() && Tiamat.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
+                if (BOTRK.IsReady() && BOTRK.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Blade_of_the_Ruined_King);
+                if (Cutl.IsReady() && Cutl.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Bilgewater_Cutlass);
+                if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
+                if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
+
+                if (IGNITE.IsReady()) damage = damage + ObjectManager.Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
+
                 if (Q.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.Q);
                 if (W.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.W);
                 if (E.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.E);
