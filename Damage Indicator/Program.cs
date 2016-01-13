@@ -24,15 +24,14 @@ namespace Damage_Indicator
         public static Spell.Active W = new Spell.Active(SpellSlot.W);
         public static Spell.Active E = new Spell.Active(SpellSlot.E);
         public static Spell.Active R = new Spell.Active(SpellSlot.R);
-
-      //  public static Spell.Targeted IGNITE = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 550);
-
+         
         public static Item Hydra = new Item((int)ItemId.Ravenous_Hydra_Melee_Only, 400);
         public static Item Tiamat = new Item((int)ItemId.Tiamat_Melee_Only, 400);
         public static Item BOTRK = new Item((int)ItemId.Blade_of_the_Ruined_King, 450);
         public static Item Cutl = new Item((int)ItemId.Bilgewater_Cutlass, 450);
         public static Item Sheen = new Item((int)ItemId.Sheen);
         public static Item TriForce = new Item((int)ItemId.Trinity_Force);
+
 
         private static bool Dind
         {
@@ -43,6 +42,7 @@ namespace Damage_Indicator
         {
             Loading.OnLoadingComplete += OnGameLoad;
         }
+
 
         private static void OnGameLoad(EventArgs args)
         {
@@ -120,14 +120,10 @@ namespace Damage_Indicator
                 if (Cutl.IsReady() && Cutl.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Bilgewater_Cutlass);
                 if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
                 if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
-
-               // if (IGNITE.IsReady()) damage = damage + ObjectManager.Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
-
                 if (Q.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.Q);
                 if (W.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.W);
                 if (E.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.E);
                 if (R.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.R);
-                if (IGNITE.IsReady()) damage = damage + ObjectManager.Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
                 return damage;
             }
             return 0;
