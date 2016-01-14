@@ -32,8 +32,6 @@ namespace Damage_Indicator
         public static Item Sheen = new Item((int)ItemId.Sheen);
         public static Item TriForce = new Item((int)ItemId.Trinity_Force);
 
-//        private static SpellDataInst Ignite;
-
         public static Spell.Targeted IGNITE = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 550);
 
         private static bool Dind
@@ -50,7 +48,6 @@ namespace Damage_Indicator
         private static void OnGameLoad(EventArgs args)
         {
             Hacks.RenderWatermark = false;
-//            Ignite = ObjectManager.Player.Spellbook.Spells.FirstOrDefault(a => a.Name.ToLower().Contains("summonerdot"));
             Chat.Print("Damage Indicator Loaded Succesfully", Color.DodgerBlue);
             OnMenuLoad();
             Drawing.OnEndScene += Drawing_OnEndScene;
@@ -124,8 +121,9 @@ namespace Damage_Indicator
                 if (Cutl.IsReady() && Cutl.IsOwned()) damage = damage + ObjectManager.Player.GetItemDamage(enemy, ItemId.Bilgewater_Cutlass);
                 if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
                 if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + ObjectManager.Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
-                //if (Ignite != null && Ignite.Slot != SpellSlot.Unknown && Ignite.IsReady) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, Ignite.Slot);
+
                 if (IGNITE != null && IGNITE.Slot != SpellSlot.Unknown && IGNITE.IsReady()) damage = damage + ObjectManager.Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
+                
                 if (Q.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.Q);
                 if (W.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.W);
                 if (E.IsReady()) damage = damage + ObjectManager.Player.GetSpellDamage(enemy, SpellSlot.E);
