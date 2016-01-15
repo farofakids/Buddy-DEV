@@ -17,7 +17,7 @@ namespace Damage_Indicator
     {
         public static Menu menu;
 
-        private static readonly AIHeroClient _Player = ObjectManager.Player;
+        //private static readonly AIHeroClient _Player = ObjectManager.Player;
 
 
         public static Spell.Active Q = new Spell.Active(SpellSlot.Q);
@@ -59,7 +59,7 @@ namespace Damage_Indicator
 
         private static void Drawing_OnEndScene(EventArgs args)
         {
-            if (_Player.IsDead)
+            if (ObjectManager.Player.IsDead)
                 return;
             if (!Dind) return;
 
