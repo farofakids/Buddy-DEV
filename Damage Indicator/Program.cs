@@ -24,7 +24,7 @@ namespace Damage_Indicator
         public static Spell.Active W = new Spell.Active(SpellSlot.W);
         public static Spell.Active E = new Spell.Active(SpellSlot.E);
         public static Spell.Active R = new Spell.Active(SpellSlot.R);
-         
+
         public static Item Hydra = new Item((int)ItemId.Ravenous_Hydra_Melee_Only, 400);
         public static Item Tiamat = new Item((int)ItemId.Tiamat_Melee_Only, 400);
         public static Item BOTRK = new Item((int)ItemId.Blade_of_the_Ruined_King, 450);
@@ -47,7 +47,6 @@ namespace Damage_Indicator
 
         private static void OnGameLoad(EventArgs args)
         {
-            Hacks.RenderWatermark = false;
             Chat.Print("Damage Indicator Loaded Succesfully", Color.DodgerBlue);
             OnMenuLoad();
             Drawing.OnEndScene += Drawing_OnEndScene;
@@ -59,10 +58,7 @@ namespace Damage_Indicator
 
         private static void Drawing_OnEndScene(EventArgs args)
         {
-            if (_Player.IsDead)
-                return;
             if (!Dind) return;
-
             foreach (var aiHeroClient in EntityManager.Heroes.Enemies)
             {
                 if (!aiHeroClient.IsHPBarRendered || !aiHeroClient.VisibleOnScreen) continue;
@@ -123,8 +119,8 @@ namespace Damage_Indicator
                 if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + _Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
                 if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + _Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
 
-                if (IGNITE != null && IGNITE.Slot != SpellSlot.Unknown && IGNITE.IsReady()) damage = damage + _Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
-                
+                if (IGNITE.Slot != SpellSlot.Unknown && IGNITE.IsReady()) damage = damage + _Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
+
                 if (Q.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.Q);
                 if (W.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.W);
                 if (E.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.E);
