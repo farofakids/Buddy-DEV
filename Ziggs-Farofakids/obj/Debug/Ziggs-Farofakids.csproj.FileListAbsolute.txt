@@ -1,0 +1,11 @@
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\Ziggs-Farofakids.exe.config
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\Ziggs-Farofakids.exe
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\Ziggs-Farofakids.pdb
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\EloBuddy.dll
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\obj\Debug\Ziggs-Farofakids.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\obj\Debug\Ziggs-Farofakids.exe
+C:\Users\Bruno\Desktop\Ziggs-Farofakids\Ziggs-Farofakids\Ziggs-Farofakids\obj\Debug\Ziggs-Farofakids.pdb
