@@ -105,7 +105,7 @@ namespace Fizz_Farofakids
             Obj_AI_Base.OnProcessSpellCast += ObjAiBaseOnOnProcessSpellCast;
             Drawing.OnDraw += DrawingOnOnDraw;
 
-            Chat.Print("<font color=\"#7CFC00\"><b>Ziggs-Farofakids(original script made by:ChewyMoon)</b></font> Loaded");
+            Chat.Print("<font color=\"#7CFC00\"><b>Fizz-Farofakids(original script made by:ChewyMoon)</b></font> Loaded");
         }
 
         private static void DrawingOnOnDraw(EventArgs args)
