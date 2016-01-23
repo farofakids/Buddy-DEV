@@ -1,0 +1,13 @@
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.exe.config
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids_Heimer.Properties.Resources.resources
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.csproj.GenerateResource.Cache
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.exe
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.pdb
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\EloBuddy.dll
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.exe
+C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.pdb
