@@ -19,6 +19,7 @@ using SettingsCombo = Farofakids_Heimer.Heimerdinger.Config.Modes.Combo;
 using SettingsHarass = Farofakids_Heimer.Heimerdinger.Config.Modes.Harass;
 using SettingsLaneClear = Farofakids_Heimer.Heimerdinger.Config.Modes.LaneClear;
 using SettingsLastHit = Farofakids_Heimer.Heimerdinger.Config.Modes.LastHit;
+using SettingsMisc = Farofakids_Heimer.Heimerdinger.Config.Modes.Misc;
 
 namespace Farofakids_Heimer
 {
@@ -412,7 +413,6 @@ namespace Farofakids_Heimer
                 {
                     private static readonly CheckBox _interruptSpell;
                     private static readonly CheckBox _antiGapCloserSpell;
-                    private static readonly Slider _miscMana;
 
                     public static bool InterruptSpell
                     {
@@ -424,17 +424,12 @@ namespace Farofakids_Heimer
                         get { return _antiGapCloserSpell.CurrentValue; }
                     }
 
-                    public static int MiscMana
-                    {
-                        get { return _miscMana.CurrentValue; }
-                    }
-
                     static Misc()
                     {
                         // Initialize the menu values
                         MiscMenu.AddGroupLabel("Miscellaneous");
-                        _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use E to interrupt spells ?"));
-                        _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use E to antigapcloser spells ?"));
+                        _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use E to interrupt spells"));
+                        _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use E to antigapcloser spells"));
                     }
 
                     public static void Initialize()
@@ -601,7 +596,7 @@ namespace Farofakids_Heimer
             {
                 if (!sender.IsEnemy) return;
 
-                if (sender.IsValidTarget(SpellManager.E.Range))
+                if (SettingsMisc.InterruptSpell && sender.IsValidTarget(SpellManager.E.Range))
                 {
                     SpellManager.E.Cast(sender);
                 }
@@ -611,7 +606,7 @@ namespace Farofakids_Heimer
             {
                 if (!sender.IsEnemy) return;
 
-                if (e.DangerLevel == DangerLevel.High)
+                if (SettingsMisc.AntiGapCloser && e.DangerLevel == DangerLevel.High)
                 {
                     SpellManager.E.Cast(sender);
                 }
