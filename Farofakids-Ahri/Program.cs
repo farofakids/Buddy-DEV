@@ -73,6 +73,7 @@ namespace Farofakids_Ahri
             Menu.Add("WCombo", new CheckBox("Use W"));
             Menu.Add("ECombo", new CheckBox("Use E"));
             Menu.Add("RCombo", new CheckBox("Use R"));
+            //Menu.Add("Rmode",  new Slider("RCombo mode: 1 to target - 2 to mouse", 1, 2));
 
             //harassMenu
             Menu.AddLabel("Harass");
