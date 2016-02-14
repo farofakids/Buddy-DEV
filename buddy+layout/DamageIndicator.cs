@@ -7,16 +7,18 @@ using SharpDX.Direct3D9;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 
-namespace Talon
+namespace buddy_layout
 {
     public static class DamageIndicator
     {
-        private const int BarWidth = 106;
-        private const float LineThickness = 9.8f;
+        private const int BarWidth = 104;
+        private const int LineThickness = 9;
 
         public delegate float DamageToUnitDelegate(AIHeroClient hero);
 
         private static DamageToUnitDelegate DamageToUnit { get; set; }
+
+        private static readonly Vector2 BarOffset = new Vector2(1, 0);
 
         private static Font _Font;
 
@@ -38,7 +40,7 @@ namespace Talon
 
         private static void OnEndScene(EventArgs args)
         {
-            if (Program.miscMenu["damageIndicatorDraw"].Cast<CheckBox>().CurrentValue)
+            if (Program.DrawingsMenu["damageIndicatorDraw"].Cast<CheckBox>().CurrentValue)
             {
                 foreach (var unit in EntityManager.Heroes.Enemies.Where(u => u.IsValidTarget() && u.IsHPBarRendered))
                 {
@@ -49,14 +51,14 @@ namespace Talon
                         continue;
                     }
 
-                    if (Program.miscMenu["damageIndicatorDraw"].Cast<CheckBox>().CurrentValue)
+                    if (Program.DrawingsMenu["damageIndicatorDraw"].Cast<CheckBox>().CurrentValue)
                     {
                         var damagePercentage = ((unit.TotalShieldHealth() - damage) > 0 ? (unit.TotalShieldHealth() - damage) : 0) /
-                                               (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
+                                                (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
                         var currentHealthPercentage = unit.TotalShieldHealth() / (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
 
-                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + damagePercentage * BarWidth), (int)unit.HPBarPosition.Y - 5 + 14);
-                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + currentHealthPercentage * BarWidth) + 1, (int)unit.HPBarPosition.Y - 5 + 14);
+                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + damagePercentage * BarWidth), (int)(unit.HPBarPosition.Y + BarOffset.Y) + 10);
+                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + currentHealthPercentage * BarWidth) + 1, (int)(unit.HPBarPosition.Y + BarOffset.Y) + 10);
 
                         Drawing.DrawLine(startPoint, endPoint, LineThickness, System.Drawing.Color.Aquamarine);
                     }

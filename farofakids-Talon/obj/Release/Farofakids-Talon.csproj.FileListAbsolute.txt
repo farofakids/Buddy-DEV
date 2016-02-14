@@ -8,3 +8,4 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\farofakids-Talon\bin\Release\SharpDX.d
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\farofakids-Talon\bin\Release\Newtonsoft.Json.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\farofakids-Talon\obj\Release\Farofakids-Talon.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\farofakids-Talon\obj\Release\Farofakids-Talon.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\farofakids-Talon\obj\Release\Farofakids-Talon.csprojResolveAssemblyReference.cache

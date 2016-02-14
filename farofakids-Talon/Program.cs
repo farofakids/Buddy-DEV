@@ -81,7 +81,7 @@ namespace Talon
             comboMenu.Add("UseIgnite", new CheckBox("Use Ignite in combo when killable"));
             comboMenu.AddGroupLabel("Combo mode");
             comboMenu.AddGroupLabel("1 = Default [E->AA->Q->W->R]   " + "[2 = R->E->W->Q]    " + "[E->R->W->Q]");
-            comboMenu.Add("Mode", new Slider("Combo mode", 1, 1, 3));
+            comboMenu.Add("Mode", new Slider("Combo mode", 2, 1, 3));
             comboMenu.Add("UseTiamat", new CheckBox("Use Tiamat"));
             comboMenu.Add("UseHydra", new CheckBox("Use Hydra"));
             comboMenu.Add("UseYoumuu", new CheckBox("Use Youmuu"));
@@ -222,7 +222,6 @@ namespace Talon
                     if (spell.Slot == SpellSlot.W && harassMenu["HarassW"].Cast<CheckBox>().CurrentValue && W.IsReady())
                     {
                         var pouput = W.GetPrediction(target);
-                        //W.CastIfHitchanceEquals(target, HitChance.VeryHigh);
                         if (pouput.HitChance >= HitChance.High)
                         {
                             W.Cast(pouput.CastPosition);
@@ -254,10 +253,6 @@ namespace Talon
                     E.Cast(target);
                 }
                 FightItems();
-                if (target.IsValidTarget(Q.Range))
-                {
-                    Player.IssueOrder(GameObjectOrder.AttackUnit, target);
-                }
                 if (Q.IsReady() && target.IsValidTarget(Q.Range))
                 {
                     Q.Cast();
@@ -281,7 +276,7 @@ namespace Talon
                         R.Cast();
                     }
                 }
-                if (!comboMenu["RWhenKill"].Cast<CheckBox>().CurrentValue && E.IsReady() && comboMenu["RCombo"].Cast<CheckBox>().CurrentValue && Q.IsReady()
+                if (!comboMenu["RWhenKill"].Cast<CheckBox>().CurrentValue && E.IsReady() && comboMenu["RCombo"].Cast<CheckBox>().CurrentValue && R.IsReady()
                     && ObjectManager.Get<AIHeroClient>().Count(aiHero => aiHero.IsValidTarget(R.Range)) >= comboMenu["rcount"].Cast<Slider>().CurrentValue)
                 {
                     R.Cast();
@@ -303,6 +298,10 @@ namespace Talon
                 {
                     W.Cast(target);
                 }
+                if (Q.IsReady() && target.IsValidTarget(Q.Range))
+                {
+                    Q.Cast();
+                }
                 FightItems();
             }
             if (comboMenu["Mode"].Cast<Slider>().CurrentValue == 3)
@@ -320,6 +319,10 @@ namespace Talon
                 if (comboMenu["WCombo"].Cast<CheckBox>().CurrentValue && W.IsReady())
                 {
                     W.Cast(target);
+                }
+                if (Q.IsReady() && target.IsValidTarget(Q.Range))
+                {
+                    Q.Cast();
                 }
             }
             if (Item.CanUseItem(3074) && comboMenu["UseYoumuu"].Cast<CheckBox>().CurrentValue && _Player.Distance(target) <= 400f && Youmuu.IsReady())
@@ -395,16 +398,25 @@ namespace Talon
                 {
                     Circle.Draw(Color.Red, W.Range, 1f, Player.Instance);
                 }
+
+            }
+            if (miscMenu["DrawE"].Cast<CheckBox>().CurrentValue)
+            {
                 if (E.Level > 0)
                 {
-                    Circle.Draw(Color.Red, W.Range, 1f, Player.Instance);
+                    Circle.Draw(Color.Red, E.Range, 1f, Player.Instance);
                 }
+
+            }
+            if (miscMenu["DrawR"].Cast<CheckBox>().CurrentValue)
+            {
                 if (R.Level > 0)
                 {
-                    Circle.Draw(Color.Red, W.Range, 1f, Player.Instance);
+                    Circle.Draw(Color.Red, R.Range, 1f, Player.Instance);
                 }
-            }
 
+            }
+  
         }
     }
 }
