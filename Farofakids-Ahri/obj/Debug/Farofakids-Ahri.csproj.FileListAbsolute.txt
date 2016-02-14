@@ -1,2 +1,7 @@
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\bin\Debug\buddy+layout.exe.config
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\bin\Debug\Farofakids-Ahri.exe.config
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\bin\Debug\Farofakids-Ahri.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\bin\Debug\Farofakids-Ahri.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\obj\Debug\Farofakids-Ahri.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\obj\Debug\Farofakids-Ahri.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Ahri\obj\Debug\Farofakids-Ahri.pdb

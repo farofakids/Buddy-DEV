@@ -60,7 +60,7 @@ namespace Farofakids_Ahri
             Drawing.OnDraw += OnDraw;
             Interrupter.OnInterruptableSpell += AntiGapcloser_OnEnemyGapcloser;
             Gapcloser.OnGapcloser += OnGapCloser;
-            Chat.Print("<font color=\"#7CFC00\"><b>FAROFAKIDS-AHRI</b></font>...Loaded"); //your script name
+            Chat.Print("<font color=\"#7CFC00\"><b>YOUR SCRIPT YOUR NAME</b></font>...Loaded"); //your script name
         }
 
         private static void InitializeMenu()
