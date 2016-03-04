@@ -17,3 +17,6 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talon\Talon\Talon\bin\Release\EloBuddy
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talon\Talon\Talon\bin\Release\SharpDX.Direct3D9.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talon\Talon\Talon\bin\Release\SharpDX.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talon\Talon\Talon\bin\Release\Newtonsoft.Json.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talonori\Talon\Talon\bin\Release\Talon.exe.config
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talonori\Talon\Talon\obj\Debug\Talon.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Talonori\Talon\Talon\obj\Debug\Talon.pdb

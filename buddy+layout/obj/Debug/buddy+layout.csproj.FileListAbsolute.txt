@@ -9,3 +9,6 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\buddy+layout\buddy+layout
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\buddy+layout\buddy+layout\obj\Debug\buddy+layout.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\buddy+layout\buddy+layout\obj\Debug\buddy+layout.pdb
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\buddy+layout\buddy+layout\obj\Debug\buddy+layout.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\bin\Debug\buddy+layout.exe.config
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\obj\Debug\buddy+layout.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\buddy+layout\obj\Debug\buddy+layout.pdb
