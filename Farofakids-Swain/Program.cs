@@ -47,6 +47,7 @@ namespace Farofakids_Swain
             DamageIndicator.DrawingColor = System.Drawing.Color.Aqua;
             Drawing.OnDraw += OnDraw;
             Interrupter.OnInterruptableSpell += OnInterruptableSpell;
+            Gapcloser.OnGapcloser += Gapcloser_OnGap;
         }
 
         private static void OnDraw(EventArgs args)
@@ -126,6 +127,14 @@ namespace Farofakids_Swain
             if (sender.IsEnemy && args.DangerLevel == DangerLevel.High && Config.Modes.Misc.UseWint && SpellManager.W.IsReady() && SpellManager.W.IsInRange(sender))
             {
                 SpellManager.W.Cast(sender);
+            }
+        }
+        private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
+        {
+            var predw = SpellManager.W.GetPrediction(Sender);
+            if (Sender.IsValidTarget(SpellManager.W.Range) && Config.Modes.Misc.UseWint && SpellManager.W.IsReady() && !Sender.IsAlly && !Sender.IsMe)
+            {
+                SpellManager.W.Cast(predw.CastPosition);
             }
         }
     }
