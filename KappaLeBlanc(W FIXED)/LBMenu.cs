@@ -75,6 +75,7 @@ namespace KappaLeBlanc
             KSM.Add("wr", new CheckBox("Use W+R + Q/E to KS"));
             KSM.Add("E", new CheckBox("Use E KS"));
             KSM.Add("R", new CheckBox("Use R KS"));
+            KSM.Add("Ignite", new CheckBox("Use Ignite KS"));
 
         }
         private static void AntiGapMenu()

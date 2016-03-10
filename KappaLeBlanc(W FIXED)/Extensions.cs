@@ -3,11 +3,17 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using SharpDX;
+using System.Linq;
 
 namespace KappaLeBlanc
 {
     static class Extensions
     {
+        public static bool HasSpell(string s)
+        {
+            return Player.Spells.FirstOrDefault(o => o.SData.Name.Contains(s)) != null;
+        }
+
         public static void CreateStringMenu(this Menu menu, string[] list, string slidername, int defaultvalue = 0, int minvalue = 0)
         {
             var maxvalue = minvalue + list.Length - 1;
@@ -124,6 +130,10 @@ namespace KappaLeBlanc
             if (Helper.CastCheckbox(LBMenu.ComboM, "R") && RReady)
             {
                 damage += Lib.R.GetDamage(target);
+            }
+            if (Lib.Ignite != null && Lib.Ignite.IsReady() && Lib.Ignite.IsInRange(target))
+            {
+                damage += Player.Instance.GetSummonerSpellDamage(target, EloBuddy.SDK.DamageLibrary.SummonerSpells.Ignite);
             }
             return damage;
         }

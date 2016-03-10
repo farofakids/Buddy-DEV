@@ -90,6 +90,7 @@ namespace Modes
                                     )
                                 {
                                     Lib.CastR(target);
+                                    //Lib.R.Cast(target);
                                 }
                             }
                         }
@@ -99,11 +100,13 @@ namespace Modes
                             {
                                 if (target.CountEnemiesInRange(Lib.W.Width) > 1)
                                 {
-                                    Lib.CastR(target);
+                                    //Lib.CastR(target);
+                                    Lib.R.Cast(target);
                                 }
                                 else if (!Lib.Q.IsReady() && !Lib.E.IsReady())
                                 {
-                                    Lib.CastR(target);
+                                    //Lib.CastR(target);
+                                    Lib.R.Cast(target);
                                 }
                             }
                         }
@@ -113,7 +116,12 @@ namespace Modes
                             {
                                 if (Lib.Q.IsReady() || Lib.E.IsReady())
                                 {
-                                    Lib.CastR(target);
+                                    //Lib.CastR(target);
+                                    var epred = Lib.E.GetPrediction(target);
+                                    if (epred.HitChance >= HitChance.Medium)
+                                    {
+                                        Lib.R.Cast(epred.CastPosition);
+                                    }
                                 }
                             }
                         }

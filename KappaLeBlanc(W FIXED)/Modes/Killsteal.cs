@@ -2,12 +2,38 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 using KappaLeBlanc;
+using System.Linq;
+
 namespace Modes
 {
     class Killsteal : Helper
     {
         public static void Execute()
         {
+            #region Ignite
+
+            if (Lib.Ignite != null && Lib.Ignite.IsReady())
+            {
+                var ignitableEnemies =
+                    EntityManager.Heroes.Enemies.Where(
+                        t =>
+                            t.IsValidTarget(Lib.Ignite.Range) && !t.HasUndyingBuff() &&
+                            Lib.Ignite.GetDamage(t) >= t.Health);
+                var igniteEnemy = TargetSelector.GetTarget(ignitableEnemies, DamageType.True);
+
+                if (igniteEnemy != null)
+                {
+                    if (Lib.Ignite != null && CastCheckbox(LBMenu.KSM, "Ignite"))
+                    {
+                        if (Lib.Ignite.IsInRange(igniteEnemy))
+                        {
+                            Lib.Ignite.Cast(igniteEnemy);
+                        }
+                    }
+                }
+            }
+
+            #endregion
             if (CastSlider(LBMenu.Misc, "AutoW") > myHero.HealthPercent)
             {
                 if (Program.RavenForm)
