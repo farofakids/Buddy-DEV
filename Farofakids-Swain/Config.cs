@@ -61,7 +61,6 @@ namespace Farofakids_Swain
                 private static readonly CheckBox _useR;
                 private static readonly CheckBox _useZhonya;
                 private static readonly Slider _useZhonyaheal;
-                private static readonly CheckBox _useIgnite;
 
                 public static bool UseQ
                 {
@@ -87,10 +86,7 @@ namespace Farofakids_Swain
                 {
                     get { return _useZhonyaheal.CurrentValue; }
                 }
-                public static bool UseIgnite
-                {
-                    get { return _useIgnite.CurrentValue; }
-                }
+
 
 
                 static Combo()
@@ -101,7 +97,6 @@ namespace Farofakids_Swain
                     _useW = Menu.Add("comboUseW", new CheckBox("Use W"));
                     _useE = Menu.Add("comboUseE", new CheckBox("Use E"));
                     _useR = Menu.Add("comboUseR", new CheckBox("Use R", false)); // Default false
-                    _useIgnite = Menu.Add("UseIgnite", new CheckBox("Use Ignite Killable AND KS"));
                     _useZhonya = Menu.Add("C_MockingSwain", new CheckBox("Use Zhonya while Ult"));
                     _useZhonyaheal = Menu.Add("C_MockingSwainSlider", new Slider("Zhonya ult at Health (%)", 30));
                     

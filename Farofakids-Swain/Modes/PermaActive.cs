@@ -17,25 +17,6 @@ namespace Farofakids_Swain.Modes
 
         public override void Execute()
         {
-            if (Program.HasSpell("SummonerDot"))
-            { 
-            if (_ignite.IsReady() || !Player.Instance.IsDead)
-            { 
-            if (!Config.Modes.Combo.UseIgnite) return;
-            foreach (
-                var source in
-                    EntityManager.Heroes.Enemies
-                        .Where(
-                            a => a.IsValidTarget(_ignite.Range) &&
-                                a.Health < 50 + 20 * Player.Instance.Level - (a.HPRegenRate / 5 * 3)))
-            {
-                _ignite.Cast(source);
-                return;
-            }
-            }
-            }
-            
-
             if (Player.Instance.ManaPercent < Settings.ManaAuto)
             {
                 return;

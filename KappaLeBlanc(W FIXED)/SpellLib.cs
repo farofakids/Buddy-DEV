@@ -6,7 +6,7 @@ namespace KappaLeBlanc
 {
     class Lib
     {
-        public static Spell.Targeted Q, Ignite;
+        public static Spell.Targeted Q;
         public static Spell.Skillshot W;
         public static Spell.Skillshot E;
         public static Spell.Targeted R;
@@ -18,11 +18,6 @@ namespace KappaLeBlanc
             W = new Spell.Skillshot(SpellSlot.W, 800, SkillShotType.Circular, 250, 1450, 250);
             E = new Spell.Skillshot(SpellSlot.E, 950, SkillShotType.Linear, 250, 1550, 55); { E.AllowedCollisionCount = 0; }
             R = new Spell.Targeted(SpellSlot.R, 950);
-            if (Extensions.HasSpell("SummonerDot"))
-            {
-                Ignite = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("SummonerDot"), 600);
-                Chat.Print("LeBlanc: Ignite Loaded", System.Drawing.Color.Red);
-            }
         }
 
         public static void CastW(Obj_AI_Base target)

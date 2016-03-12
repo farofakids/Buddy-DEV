@@ -34,7 +34,7 @@ namespace FedKatarinaV2
             b.OnValueChange += delegate { if (b.CurrentValue) a.CurrentValue = false; };
             WardjumpMenu.AddSeparator();
             WardjumpMenu.AddLabel("Time Modifications");
-            WardjumpMenu.Add("checkTime", new Slider("Position Reset Time (ms)", 100, 1, 2000));
+            WardjumpMenu.Add("checkTime", new Slider("Position Reset E Time (ms)", 100, 1, 2000));
             WardjumpMenu.AddSeparator();
             WardjumpMenu.AddLabel("Keybind Settings");
 

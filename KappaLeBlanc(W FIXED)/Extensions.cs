@@ -131,10 +131,6 @@ namespace KappaLeBlanc
             {
                 damage += Lib.R.GetDamage(target);
             }
-            if (Lib.Ignite != null && Lib.Ignite.IsReady() && Lib.Ignite.IsInRange(target))
-            {
-                damage += Player.Instance.GetSummonerSpellDamage(target, EloBuddy.SDK.DamageLibrary.SummonerSpells.Ignite);
-            }
             return damage;
         }
     }

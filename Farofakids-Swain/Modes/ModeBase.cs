@@ -21,10 +21,6 @@ namespace Farofakids_Swain.Modes
         {
             get { return SpellManager.R; }
         }
-        protected Spell.Targeted _ignite
-        {
-            get { return SpellManager._ignite; }
-        }
         public abstract bool ShouldBeExecuted();
 
         public abstract void Execute();

@@ -15,7 +15,7 @@ namespace Farofakids_Swain
         // watch out for the case being correct!
         public const string ChampName = "Swain";
         public static bool RavenForm;
-        public static Item Zhonya, Ignite;
+
         public static readonly Item Zhonyas = new Item(ItemId.Zhonyas_Hourglass);
         
 

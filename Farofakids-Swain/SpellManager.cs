@@ -16,7 +16,6 @@ namespace Farofakids_Swain
         public static Spell.Skillshot W { get; private set; }
         public static Spell.Targeted E { get; private set; }
         public static Spell.Active R { get; private set; }
-        public static Spell.Targeted _ignite { get; private set; }
         public static Spell.SpellBase[] Spells { get; private set; }
         public static Dictionary<SpellSlot, Color> ColorTranslation { get; private set; }
 
@@ -27,10 +26,6 @@ namespace Farofakids_Swain
             W = new Spell.Skillshot(SpellSlot.W, 820, SkillShotType.Circular, 500, 1250, 275);
             E = new Spell.Targeted(SpellSlot.E, 625);
             R = new Spell.Active(SpellSlot.R, 625);
-          //  if (Program.HasSpell("SummonerDot"))
-            //{ 
-            _ignite = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("SummonerDot"), 600);
-            //}
             Spells = (new Spell.SpellBase[] { Q, W, E, R }).OrderByDescending(o => o.Range).ToArray();
             ColorTranslation = new Dictionary<SpellSlot, Color>
             {

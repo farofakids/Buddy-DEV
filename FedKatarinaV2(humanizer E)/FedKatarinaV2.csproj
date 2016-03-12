@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Damage.cs" />
+    <Compile Include="DamageIndicator.cs" />
     <Compile Include="Extended.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
