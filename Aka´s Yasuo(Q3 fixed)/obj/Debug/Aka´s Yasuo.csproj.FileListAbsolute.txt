@@ -1,0 +1,20 @@
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\GosuMechanics_Yasuo.exe.config
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\GosuMechanics_Yasuo.exe
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\GosuMechanics_Yasuo.pdb
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\EloBuddy.dll
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\EloBuddy.SDK.dll
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\SharpDX.dll
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\bin\Release\Newtonsoft.Json.dll
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\obj\Debug\GosuMechanics_Yasuo.exe
+C:\Users\Bruno\AppData\Roaming\EloBuddy\Repositories\6E4C4AD7\Aka´s Yasuo\obj\Debug\GosuMechanics_Yasuo.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\GosuMechanics_Yasuo.exe.config
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\obj\Debug\GosuMechanics_Yasuo.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\obj\Debug\GosuMechanics_Yasuo.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\GosuMechanics_Yasuo.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\GosuMechanics_Yasuo.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\EloBuddy.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\EloBuddy.SDK.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\SharpDX.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Aka´s Yasuo(Q3 fixed)\bin\Release\Newtonsoft.Json.dll
