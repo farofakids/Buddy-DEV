@@ -16,7 +16,7 @@ namespace AkaYasuo.Modes
         public static void Harass2()
         {
             if (MenuManager.HarassMenu["QLastHit"].Cast<CheckBox>().CurrentValue && !Variables.HaveQ3
-    && !Variables.isDashing)
+                && !Variables.isDashing)
             {
                 var obj =
                     EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Variables._Player.ServerPosition, Program.Q.Range)
@@ -27,32 +27,7 @@ namespace AkaYasuo.Modes
                 }
             }
 
-            if (MenuManager.ComboMenu["Q"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady())
-            {
-                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && ((!Variables.HaveQ3 || MenuManager.HarassMenu["Q3"].Cast<CheckBox>().CurrentValue))
-                        && (!Variables._Player.IsUnderEnemyturret() || MenuManager.HarassMenu["QTower"].Cast<CheckBox>().CurrentValue))
-                {
-                    if (Variables._Player.IsDashing())
-                    {
-                        if (Variables.QCirTarget != null)
-                        {
-                            Variables.CastQCir(Variables.QCirTarget);
-                        }
-                        if (!Variables.HaveQ3 && Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && MenuManager.ComboMenu["StackQ"].Cast<CheckBox>().CurrentValue && MenuManager.ComboMenu["EC"].Cast<CheckBox>().CurrentValue
-                            && MenuManager.ComboMenu["EGap"].Cast<CheckBox>().CurrentValue)
-                        {
-                            var minionObj = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
-                                Variables._Player.GetDashInfo().EndPos,
-                                Variables.QCirWidth);
-                            if (minionObj.Any() && Variables._Player.Distance(Variables._Player.GetDashInfo().EndPos) < 150)
-                            {
-                                Variables.CastQCir(minionObj.MinOrDefault(i => i.Distance(Variables._Player)));
-                            }
-                        }
-                    }
-                    else if (!Variables.isDashing)
-                    {
-                        var target = TargetSelector.GetTarget(
+                                    var target = TargetSelector.GetTarget(
                             !Variables.HaveQ3 ? Variables.QRange : Variables.Q2Range,
                             DamageType.Physical);
                         if (target != null)
@@ -85,11 +60,7 @@ namespace AkaYasuo.Modes
                                 }
                             }
                         }
-                    }
-                }
-            }
         }
-
     }
 }
 

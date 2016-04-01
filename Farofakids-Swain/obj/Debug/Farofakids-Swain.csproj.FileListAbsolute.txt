@@ -20,3 +20,4 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\obj\Debug\Farofakids-
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.SDK.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.Sandbox.dll

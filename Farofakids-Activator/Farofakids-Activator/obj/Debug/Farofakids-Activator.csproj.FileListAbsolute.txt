@@ -9,3 +9,4 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Activator\Farofakids-Activa
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Activator\Farofakids-Activator\obj\Debug\Farofakids-Activator.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Activator\Farofakids-Activator\obj\Debug\Farofakids-Activator.pdb
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Activator\Farofakids-Activator\obj\Debug\Farofakids-Activator.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Activator\Farofakids-Activator\bin\Debug\EloBuddy.Sandbox.dll
