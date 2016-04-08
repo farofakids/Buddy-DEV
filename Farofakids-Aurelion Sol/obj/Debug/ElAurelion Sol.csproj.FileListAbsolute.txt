@@ -1,0 +1,15 @@
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\ElAurelion Sol.exe.config
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\ElAurelion Sol.exe
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\ElAurelion Sol.pdb
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\EloBuddy.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\obj\Debug\ElAurelion Sol.exe
+C:\Users\Bruno\Desktop\ElAurelion Sol\ElAurelion Sol\obj\Debug\ElAurelion Sol.pdb
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\ElAurelion Sol.exe.config
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\obj\Debug\ElAurelion Sol.exe
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\obj\Debug\ElAurelion Sol.pdb
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\Farofakids-Aurelion Sol.exe.config

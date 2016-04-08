@@ -1,0 +1,12 @@
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\Farofakids-Aurelion Sol.exe.config
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\Farofakids-Aurelion Sol.exe
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\Farofakids-Aurelion Sol.pdb
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\EloBuddy.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\obj\Debug\Farofakids-Aurelion Sol.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\obj\Debug\Farofakids-Aurelion Sol.exe
+C:\Users\Bruno\Desktop\ElAurelion Sol\Farofakids-Aurelion Sol\obj\Debug\Farofakids-Aurelion Sol.pdb

@@ -9,3 +9,4 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\TwistedFate\bin\Debug\Newtonsoft.Json.
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\TwistedFate\bin\Debug\EloBuddy.Sandbox.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\TwistedFate\obj\Debug\TwistedBuddy.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\TwistedFate\obj\Debug\TwistedBuddy.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\TwistedFate\obj\Debug\TwistedBuddy.csprojResolveAssemblyReference.cache
