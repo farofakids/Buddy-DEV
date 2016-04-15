@@ -187,7 +187,7 @@
                 if (Q.IsReady() && comboMenu["Combo.Q"].Cast<CheckBox>().CurrentValue)
                 {
                     var prediction = Q.GetPrediction(target);
-                    if (prediction.HitChance >= HitChance.High)
+                    if (prediction.HitChance >= HitChance.Medium)
                     {
                         Q.Cast(prediction.CastPosition);
                     }
@@ -224,7 +224,7 @@
                 if (R.IsReady() && comboMenu["Combo.R"].Cast<CheckBox>().CurrentValue && RDamage(target) > target.Health + target.AttackShield) 
                 {
                     var prediction = R.GetPrediction(target);
-                    if (prediction.HitChance >= HitChance.High)
+                    if (prediction.HitChance >= HitChance.Medium)
                     {   
                         R.Cast(prediction.CastPosition);
                     }
@@ -271,7 +271,7 @@
                 && Q.IsReady())
             {
                 var prediction = Q.GetPrediction(sender);
-                if (prediction.HitChance >= HitChance.High)
+                if (prediction.HitChance >= HitChance.Medium)
                 {
                     Q.Cast(prediction.CastPosition);
                 }
@@ -290,7 +290,7 @@
                 if (gapcloser.Sender.IsValidTarget(Q.Range) && Q.IsReady())
                 {
                     var prediction = Q.GetPrediction(gapcloser.Sender);
-                    if (prediction.HitChance >= HitChance.High)
+                    if (prediction.HitChance >= HitChance.Medium)
                     {
                         Q.Cast(prediction.CastPosition);
                     }
@@ -446,20 +446,21 @@
                 {
                     return;
                 }
-                var minion = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Position, Q.Range);
-                if (minion == null)
-                {
-                    return;
-                }
+                 var minion = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Position, Q.Range);
+                 if (minion == null)
+                 {
+                     return;
+                 }
 
-                if (laneclearMenu["laneclear.Q"].Cast<CheckBox>().CurrentValue && Q.IsReady())
-                {
-                    var prediction = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(minion, Q.Width, (int)Q.Range);
-                    if (prediction.HitNumber >= 2)
-                    {
-                        Q.Cast(prediction.CastPosition);
-                    }
-                }
+                 if (laneclearMenu["laneclear.Q"].Cast<CheckBox>().CurrentValue && Q.IsReady())
+                 {
+                     var prediction = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(minion, Q.Width, (int)Q.Range);
+                     if (prediction.HitNumber >= 2)
+                     {
+                         Q.Cast(prediction.CastPosition);
+                     }
+                 }
+
             }
             catch (Exception exception)
             {

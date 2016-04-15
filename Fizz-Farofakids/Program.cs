@@ -38,7 +38,7 @@ namespace Fizz_Farofakids
 
         private static void CreateMenu()
         {
-            Menu = MainMenu.AddMenu("Ziggs-Farofakids", "Ziggs-Farofakids");
+            Menu = MainMenu.AddMenu("Fizz-Farofakids", "Fizz-Farofakids");
 
             comboMenu = Menu.AddSubMenu("Combo");
             comboMenu.Add("UseQCombo", new CheckBox("Use Q"));
