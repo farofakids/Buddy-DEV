@@ -163,6 +163,11 @@ namespace Farofakids_Galio
 
             public static class Misc
             {
+                public static bool autoshield
+                {
+                    get { return MenuM["autoshield"].Cast<CheckBox>().CurrentValue; }
+                }
+
                 public static bool UseWint
                 {
                     get { return MenuM["UseWint"].Cast<CheckBox>().CurrentValue; }
@@ -181,6 +186,7 @@ namespace Farofakids_Galio
                 static Misc()
                 {
                     MenuM.AddGroupLabel("Miscellaneous");
+                    MenuM.Add("autoshield", new CheckBox("autoshield URFMODE"));
                     MenuM.Add("UseWint", new CheckBox("Use W to dangerous spells"));
                     MenuM.Add("UseWhea", new Slider("Use Auto W to health", 70, 1,100));
                     MenuM.Add("UseWman", new Slider("Use Auto W min mana", 50, 1, 100));

@@ -17,6 +17,10 @@ namespace Farofakids_Galio.Modes
 
         public override void Execute()
         {
+            if (SettingsC.Modes.Misc.autoshield && W.IsReady())
+            {
+                W.Cast(Player.Instance);
+            }
             if (CheckAutoW())
             {
                 W.Cast(Player.Instance);
