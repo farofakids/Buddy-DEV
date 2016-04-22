@@ -7,6 +7,8 @@ using SettingsC = Farofakids_Galio.Config;
 
 namespace Farofakids_Galio.Modes
 {
+    
+
     public sealed class PermaActive : ModeBase
     {
         public override bool ShouldBeExecuted()
@@ -14,10 +16,11 @@ namespace Farofakids_Galio.Modes
             return true;
         }
 
+        public static readonly AIHeroClient p;
 
         public override void Execute()
         {
-            if (SettingsC.Modes.Misc.autoshield && W.IsReady())
+            if (SettingsC.Modes.Misc.autoshield && W.IsReady() && !p.IsRecalling())
             {
                 W.Cast(Player.Instance);
             }
