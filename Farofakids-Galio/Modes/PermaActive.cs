@@ -16,14 +16,14 @@ namespace Farofakids_Galio.Modes
             return true;
         }
 
-        public static readonly AIHeroClient p;
-
         public override void Execute()
         {
-            if (SettingsC.Modes.Misc.autoshield && W.IsReady() && !p.IsRecalling())
+
+            if (SettingsC.Modes.Misc.autoshield && W.IsReady())
             {
                 W.Cast(Player.Instance);
             }
+
             if (CheckAutoW())
             {
                 W.Cast(Player.Instance);
