@@ -18,8 +18,7 @@ namespace Farofakids_Galio.Modes
 
         public override void Execute()
         {
-
-            if (SettingsC.Modes.Misc.autoshield && W.IsReady())
+            if (SettingsC.Modes.Misc.autoshield && W.IsReady() && !EloBuddy.Player.Instance.IsRecalling())
             {
                 W.Cast(Player.Instance);
             }
