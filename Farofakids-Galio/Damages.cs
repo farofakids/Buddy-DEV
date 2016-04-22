@@ -9,7 +9,6 @@ namespace Farofakids_Galio
         {
             // Auto attack
             var damage = Player.Instance.GetAutoAttackDamage(target);
-
             // Q
             if (SpellManager.Q.IsReady())
             {

@@ -10,7 +10,7 @@ namespace FedKatarinaV2
 {
     internal class StateManager
     {
-        public static Menu ComboMenu, HarassMenu, FarmMenu, JungleMenu, KillstealMenu;
+        public static Menu ComboMenu, HarassMenu, FarmMenu, JungleMenu;
         public static AIHeroClient _Player
         {
             get { return ObjectManager.Player; }

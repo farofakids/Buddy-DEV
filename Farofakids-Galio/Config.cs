@@ -235,6 +235,7 @@ namespace Farofakids_Galio
 
                 public static void Initialize()
                 {
+                    
                 }
             }
 
