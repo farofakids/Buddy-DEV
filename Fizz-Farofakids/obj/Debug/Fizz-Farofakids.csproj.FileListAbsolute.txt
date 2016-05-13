@@ -9,3 +9,4 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\EloBuddy.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\EloBuddy.SDK.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\EloBuddy.Sandbox.dll

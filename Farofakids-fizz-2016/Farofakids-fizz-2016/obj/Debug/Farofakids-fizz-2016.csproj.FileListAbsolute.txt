@@ -1,0 +1,12 @@
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\Farofakids-fizz-2016.exe.config
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\Farofakids-fizz-2016.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\Farofakids-fizz-2016.pdb
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\EloBuddy.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\SharpDX.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\obj\Debug\Farofakids-fizz-2016.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\obj\Debug\Farofakids-fizz-2016.exe
+C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-fizz-2016\Farofakids-fizz-2016\obj\Debug\Farofakids-fizz-2016.pdb

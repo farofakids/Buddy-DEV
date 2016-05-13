@@ -172,6 +172,59 @@ namespace AkaYasuo
             DrawingMenu.Add("DrawE", new CheckBox("Draw E", false));
             DrawingMenu.Add("DrawR", new CheckBox("Draw R", false));
             DrawingMenu.Add("DrawSpots", new CheckBox("Draw Walljump spots"));
+            DrawingMenu.Add("drawFill", new CheckBox("drawFill"));
+            DamageIndicator.DamageToUnit = GetComboDamage;
+        }
+
+        private static float GetComboDamage(Obj_AI_Base enemy)
+        {
+            try
+            {
+                float damage = 0;
+
+                //   if (!Player.IsWindingUp)
+                // {
+                damage += (float)ObjectManager.Player.GetAutoAttackDamage(enemy, true);
+                //}
+
+                if (Program.Q.IsReady())
+                {
+                    //damage += Q.GetDamage(enemy);
+                    damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                }
+
+                if (Program.Q2.IsReady())
+                {
+                    //damage += Q.GetDamage(enemy);
+                    damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                }
+
+                if (Program.W.IsReady())
+                {
+                    //damage += W.GetDamage(enemy);
+                    damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                }
+
+                if (Program.E.IsReady())
+                {
+                    // damage += E.GetDamage(enemy);
+                    damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                }
+
+                if (Program.R.IsReady())
+                {
+                    //damage += R.GetDamage(enemy);
+                    damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+                }
+
+                return damage;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+
+            return 0;
         }
 
         public static void Dogemenu()

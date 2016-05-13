@@ -1,8 +1,0 @@
-C:\Users\Desktop\Elobuddy\FedKatarinaV2.exe.config
-C:\Users\Desktop\Elobuddy\FedKatarinaV2.exe
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\FedKatarinaV2(humanizer E)\obj\Debug\FedKatarinaV2(humanizer E).csprojResolveAssemblyReference.cache
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\FedKatarinaV2(humanizer E)\obj\Debug\FedKatarinaV2.exe
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\FedKatarinaV2(humanizer E)\obj\Debug\FedKatarinaV2.pdb
-C:\Users\Desktop\Elobuddy\FedKatarinaV2(humanizer E).exe.config
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\FedKatarinaV2(humanizer E)\obj\Debug\FedKatarinaV2(humanizer E).exe
-C:\Users\Bruno\Documents\GitHub\Buddy-dev\FedKatarinaV2(humanizer E)\obj\Debug\FedKatarinaV2(humanizer E).pdb

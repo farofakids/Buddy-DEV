@@ -24,10 +24,10 @@ namespace Fizz_Farofakids
         private static AIHeroClient DrawTarget { get; set; }
         private static Geometry.Polygon.Rectangle RRectangle { get; set; }
 
-        private static Spell.Targeted Q = new Spell.Targeted(SpellSlot.Q, 550);
-        private static Spell.Active W = new Spell.Active(SpellSlot.W, (uint)Player.GetAutoAttackRange());
-        private static Spell.Skillshot E = new Spell.Skillshot(SpellSlot.E, 400, SkillShotType.Circular, 250, int.MaxValue, 330);
-        private static Spell.Skillshot R = new Spell.Skillshot(SpellSlot.R, 1300, SkillShotType.Linear, 250, 1200, 80);
+        private static Spell.Targeted Q;
+        private static Spell.Active W;
+        private static Spell.Skillshot E, R;
+        
 
         private static void Main(string[] args)
         {
@@ -96,6 +96,12 @@ namespace Fizz_Farofakids
             {
                 return;
             }
+             Q = new Spell.Targeted(SpellSlot.Q, 550);
+             W = new Spell.Active(SpellSlot.W, (uint)Player.GetAutoAttackRange());
+             E = new Spell.Skillshot(SpellSlot.E, 400, SkillShotType.Circular, 250, int.MaxValue, 330);
+             R = new Spell.Skillshot(SpellSlot.R, 1300, SkillShotType.Linear, 250, 1200, 80);
+             E.AllowedCollisionCount = int.MaxValue;
+             R.AllowedCollisionCount = 0;
 
             CreateMenu();
 
@@ -234,6 +240,19 @@ namespace Fizz_Farofakids
             R.Cast(castPosition);
         }
 
+        public static void CastR(Obj_AI_Base target)
+        {
+            if (R.IsReady())
+            {
+                Vector3 endPos = R.GetPrediction(target).CastPosition.Extend(Player.Position, -(600)).To3D();
+
+                if (!target.HasBuff("summonerbarrier") || !target.HasBuff("BlackShield") || !target.HasBuff("SivirShield") || !target.HasBuff("BansheesVeil") || !target.HasBuff("ShroudofDarkness"))
+                {
+                                R.Cast(endPos);
+                }
+            }
+        }
+
         private static void DoCombo()
         {
             var target = TargetSelector.GetTarget(R.Range, DamageType.Magical);
@@ -246,7 +265,8 @@ namespace Fizz_Farofakids
             if (Getcheckboxvalue(comboMenu, "UseREGapclose") && CanKillWithUltCombo(target) && Q.IsReady() && W.IsReady() &&
              E.IsReady() && R.IsReady() && (Player.Distance(target) < Q.Range + E.Range * 2))
             {
-                CastRSmart(target);
+                //CastRSmart(target);
+                CastR(target);
                 E.Cast(Player.ServerPosition.Extend(target.ServerPosition, E.Range - 1).To3D());
                 E.Cast(Player.ServerPosition.Extend(target.ServerPosition, E.Range - 1).To3D());
                 W.Cast();
@@ -258,22 +278,26 @@ namespace Fizz_Farofakids
                 {
                     if (Player.GetSpellDamage(target, SpellSlot.R) > target.Health)
                     {
-                        CastRSmart(target);
+                        //CastRSmart(target);
+                        CastR(target);
                     }
 
                     if (DamageToUnit(target) > target.Health)
                     {
-                        CastRSmart(target);
+                        //CastRSmart(target);
+                        CastR(target);
                     }
 
                     if ((Q.IsReady() || E.IsReady()))
                     {
-                        CastRSmart(target);
+                        //CastRSmart(target);
+                        CastR(target);
                     }
 
                     if (Player.IsInAutoAttackRange(target))
                     {
-                        CastRSmart(target);
+                        //CastRSmart(target);
+                        CastR(target);
                     }
                 }
 
