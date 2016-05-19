@@ -28,3 +28,12 @@ C:\Users\Bruno\Desktop\Damage Indicator\obj\Debug\Damage Indicator.csprojResolve
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Damage Indicator.exe.config
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.pdb
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Damage Indicator.exe
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Damage Indicator.pdb
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\EloBuddy.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\EloBuddy.SDK.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\SharpDX.dll

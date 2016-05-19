@@ -10,7 +10,6 @@ namespace Farofakids_fizz_2016
 {
     class DamageIndicator
     {
-        //public delegate float DamageToUnitDelegate(AIHeroClient hero);
         public delegate float DamageToUnitDelegate(Obj_AI_Base minion);
 
         private static int _height;
@@ -58,7 +57,6 @@ namespace Farofakids_fizz_2016
         }
 
         private static void DrawLine(Obj_AI_Base unit)
-        // private static void DrawLine(EventArgs args)
         {
             var damage = _damageToUnit(unit);
             if (damage <= 0) return;

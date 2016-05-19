@@ -9,6 +9,7 @@ using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Rendering;
+using EloBuddy.SDK.Enumerations;
 using SharpDX;
 
 namespace Damage_Indicator
@@ -17,13 +18,10 @@ namespace Damage_Indicator
     {
         public static Menu menu;
 
-        private static readonly AIHeroClient _Player = ObjectManager.Player;
-
-
-        public static Spell.Active Q = new Spell.Active(SpellSlot.Q);
-        public static Spell.Active W = new Spell.Active(SpellSlot.W);
-        public static Spell.Active E = new Spell.Active(SpellSlot.E);
-        public static Spell.Active R = new Spell.Active(SpellSlot.R);
+         public static Spell.Active QA, WA, EA, RA;
+         /*public static Spell.Skillshot QS, WS, ES, RS;
+         public static Spell.Targeted QT, WT, ET, RT;
+         public static Spell.Chargeable QC, WC, EC, RC;*/
 
         public static Item Hydra = new Item((int)ItemId.Ravenous_Hydra_Melee_Only, 400);
         public static Item Tiamat = new Item((int)ItemId.Tiamat_Melee_Only, 400);
@@ -32,9 +30,9 @@ namespace Damage_Indicator
         public static Item Sheen = new Item((int)ItemId.Sheen);
         public static Item TriForce = new Item((int)ItemId.Trinity_Force);
 
-        public static Spell.Targeted IGNITE = new Spell.Targeted(_Player.GetSpellSlotFromName("summonerdot"), 550);
+        public static Spell.Targeted IGNITE;
 
-        private static bool Dind
+        public static bool Dind
         {
             get { return menu["Dind"].Cast<CheckBox>().CurrentValue; }
         }
@@ -44,41 +42,32 @@ namespace Damage_Indicator
             Loading.OnLoadingComplete += OnGameLoad;
         }
 
-
         private static void OnGameLoad(EventArgs args)
         {
+            QA = new Spell.Active(SpellSlot.Q);
+            WA = new Spell.Active(SpellSlot.W);
+            EA = new Spell.Active(SpellSlot.E);
+            RA = new Spell.Active(SpellSlot.R);
+
+            /*QS = new Spell.Skillshot(SpellSlot.Q, 0, SkillShotType.Linear);
+            WS = new Spell.Skillshot(SpellSlot.W, 0, SkillShotType.Linear);
+            ES = new Spell.Skillshot(SpellSlot.E, 0, SkillShotType.Linear);
+            RS = new Spell.Skillshot(SpellSlot.R, 0, SkillShotType.Linear);
+
+            QT = new Spell.Targeted(SpellSlot.Q, 0);
+            WT = new Spell.Targeted(SpellSlot.W, 0);
+            ET = new Spell.Targeted(SpellSlot.E, 0);
+            RT = new Spell.Targeted(SpellSlot.R, 0);
+
+            QC = new Spell.Chargeable(SpellSlot.Q, 0, 0, 0);
+            WC = new Spell.Chargeable(SpellSlot.W, 0, 0, 0);
+            EC = new Spell.Chargeable(SpellSlot.E, 0, 0, 0);
+            RC = new Spell.Chargeable(SpellSlot.R, 0, 0, 0);*/
+
+            IGNITE = new Spell.Targeted(SpellSlot.Unknown, 0);
+
             Chat.Print("Damage Indicator Loaded Succesfully", Color.DodgerBlue);
             OnMenuLoad();
-            Drawing.OnEndScene += Drawing_OnEndScene;
-        }
-
-        private static readonly float _barLength = 104;
-        private static readonly float _xOffset = 2;
-        private static readonly float _yOffset = 9;
-
-        private static void Drawing_OnEndScene(EventArgs args)
-        {
-            if (!Dind) return;
-            foreach (var aiHeroClient in EntityManager.Heroes.Enemies)
-            {
-                if (!aiHeroClient.IsHPBarRendered || !aiHeroClient.VisibleOnScreen) continue;
-                var barPos = aiHeroClient.HPBarPosition;
-                var damage = getComboDamage(aiHeroClient);
-                var percentHealthAfterDamage = Math.Max(0, aiHeroClient.Health - damage) / aiHeroClient.MaxHealth;
-                var yPos = barPos.Y + _yOffset;
-                var xPos = barPos.X + _xOffset;
-                var xPosDamage = barPos.X + _xOffset + _barLength * percentHealthAfterDamage;
-                var xPosCurrentHp = barPos.X + _xOffset + _barLength * aiHeroClient.Health / aiHeroClient.MaxHealth;
-                {
-                    Line.DrawLine(System.Drawing.Color.Green, 9f,
-                    new Vector2(xPosCurrentHp + (damage > percentHealthAfterDamage ? percentHealthAfterDamage : damage) - 2, yPos),
-                    new Vector2(xPosDamage + (damage > percentHealthAfterDamage ? percentHealthAfterDamage : damage) + 2, yPos));
-
-                    Line.DrawLine(System.Drawing.Color.DarkOrange, 9f,
-                    new Vector2(xPosDamage + (damage > percentHealthAfterDamage ? percentHealthAfterDamage : damage) - 2, yPos),
-                    new Vector2(xPosDamage + (damage > percentHealthAfterDamage ? percentHealthAfterDamage : damage) + 2, yPos));
-                }
-            }
         }
 
         private static void OnMenuLoad()
@@ -102,30 +91,47 @@ namespace Damage_Indicator
                           "TriForce" + Environment.NewLine + Environment.NewLine +
                           "Not work 100% with champions, containing passive in their abilities" + Environment.NewLine +
                           "only use to have a base of their damage" + Environment.NewLine);
+
+            DamageIndicator.DamageToUnit = getComboDamage;
         }
 
         private static float getComboDamage(Obj_AI_Base enemy)
         {
             if (enemy != null)
             {
-                float damage = 0;
+                var damage = 0d;
 
-                damage = damage + _Player.GetAutoAttackDamage(enemy);
+                damage = damage += Player.Instance.GetAutoAttackDamage(enemy, true);
 
-                if (Hydra.IsReady() && Hydra.IsOwned()) damage = damage + _Player.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
-                if (Tiamat.IsReady() && Tiamat.IsOwned()) damage = damage + _Player.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
-                if (BOTRK.IsReady() && BOTRK.IsOwned()) damage = damage + _Player.GetItemDamage(enemy, ItemId.Blade_of_the_Ruined_King);
-                if (Cutl.IsReady() && Cutl.IsOwned()) damage = damage + _Player.GetItemDamage(enemy, ItemId.Bilgewater_Cutlass);
-                if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + _Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
-                if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + _Player.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
+                if (Hydra.IsReady() && Hydra.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
+                if (Tiamat.IsReady() && Tiamat.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
+                if (BOTRK.IsReady() && BOTRK.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Blade_of_the_Ruined_King);
+                if (Cutl.IsReady() && Cutl.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Bilgewater_Cutlass);
+                if (Sheen.IsReady() && Sheen.IsOwned()) damage = damage + Player.Instance.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
+                if (TriForce.IsReady() && TriForce.IsOwned()) damage = damage + Player.Instance.GetAutoAttackDamage(enemy) + Player.Instance.BaseAttackDamage * 2;
 
-                if (IGNITE.Slot != SpellSlot.Unknown && IGNITE.IsReady()) damage = damage + _Player.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
+                if (IGNITE.IsReady()) damage += Player.Instance.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
 
-                if (Q.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.Q);
-                if (W.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.W);
-                if (E.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.E);
-                if (R.IsReady()) damage = damage + _Player.GetSpellDamage(enemy, SpellSlot.R);
-                return damage;
+                if (QA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                if (WA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                if (EA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                if (RA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+
+                //if (QS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (ES.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+
+                //if (QT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (ET.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+
+                //if (QC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (EC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+                return (float) damage;
             }
             return 0;
         }

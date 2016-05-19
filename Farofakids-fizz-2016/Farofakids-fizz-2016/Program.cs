@@ -18,8 +18,10 @@ namespace Farofakids_fizz_2016
         public static Menu Menu, comboMenu, harassMenu, miscMenu, drawMenu;
         private static Spell.Targeted Q;
         private static Spell.Active W;
-        private static Spell.Skillshot E, R; 
-        
+        private static Spell.Skillshot E, R;
+        private static Vector3? LastHarassPos { get; set; }
+        private static bool JumpBack { get; set; }
+
 
         static void Main(string[] args)
         {
@@ -124,7 +126,44 @@ namespace Farofakids_fizz_2016
 
         private static void DoHarass()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+                if (target == null)
+                {
+                    return;
+                }
+
+                if (LastHarassPos == null)
+                {
+                    LastHarassPos = Player.Instance.ServerPosition;
+                }
+
+                if (JumpBack && IsActive("ElFizz.Harass.E"))
+                {
+                    E.Cast((Vector3)LastHarassPos);
+                }
+
+                if (W.IsReady() && IsActive("ElFizz.Harass.W") && (Q.IsReady() || Orbwalker.InAutoAttackRange(target)))
+                {
+                    W.Cast();
+                }
+
+                if (Q.IsReady() && IsActive("ElFizz.Harass.Q"))
+                {
+                    Q.Cast(target);
+                }
+
+                if (E.IsReady() && IsActive("ElFizz.Harass.E")
+                    && Menu.Item("ElFizz.Harass.Mode.E").GetValue<StringList>().SelectedIndex == 1)
+                {
+                    E.Cast(target);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private static float GetComboDamage(Obj_AI_Base enemy)
@@ -218,7 +257,6 @@ namespace Farofakids_fizz_2016
 
         }
 
-        //teste
         private static bool Qkillable(AIHeroClient target)
         {
             try
