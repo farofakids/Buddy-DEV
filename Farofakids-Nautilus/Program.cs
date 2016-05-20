@@ -58,17 +58,13 @@ namespace Farofakids_Nautilus
                     MODES.Harras();
                     break;
             }
-            if (MENUS.URFMODE)
-            { 
-            if (SPELLS.W.IsReady() && !Player.Instance.IsRecalling() )
+            if (!MENUS.URFMODE) return;
+
+            if (SPELLS.W.IsReady() && !Player.Instance.IsRecalling())
             {
                 SPELLS.W.Cast();
             }
-            if (SPELLS.E.IsReady() && !Player.Instance.IsRecalling())
-            {
-                SPELLS.E.Cast();
-            }
-            }
+            
         }
     }
 }

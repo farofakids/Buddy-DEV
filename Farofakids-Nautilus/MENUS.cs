@@ -76,7 +76,7 @@ namespace Farofakids_Nautilus
 
         }
 
-        public static bool URFMODE { get { return ComboMenu["URFMODE"].Cast<CheckBox>().CurrentValue; } }
+        public static bool URFMODE { get { return FarofakidsNautilusMenu["URFMODE"].Cast<CheckBox>().CurrentValue; } }
 
         //combo
         public static bool UseQCombo { get { return ComboMenu["UseQCombo"].Cast<CheckBox>().CurrentValue; } }
