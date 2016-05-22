@@ -624,6 +624,7 @@ namespace Farofakids_Heimer
 
             public override void Execute()
             {
+                Game.Say("Moo");
                 var target = TargetSelector.GetTarget(W.Range, DamageType.Magical);
                 if (target == null) return;
                 var qtarget = TargetSelector.GetTarget(600, DamageType.Magical);
