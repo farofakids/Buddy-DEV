@@ -38,11 +38,11 @@ namespace Farofakids_Heimerdinger
             if (MENUS.QRange && SPELLS.Q.Handle.IsLearned)
                 Drawing.DrawCircle(Player.Instance.Position, SPELLS.Q.Range, Color.Red);
             if (MENUS.WRange && SPELLS.W.Handle.IsLearned)
-                Drawing.DrawCircle(Player.Instance.Position, SPELLS.W.Range, Color.Transparent);
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.W.Range, Color.Red);
             if (MENUS.ERange && SPELLS.E.Handle.IsLearned)
-                Drawing.DrawCircle(Player.Instance.Position, SPELLS.E.Range, Color.Transparent);
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.E.Range, Color.Red);
             if (MENUS.RRange && SPELLS.R.Handle.IsLearned)
-                Drawing.DrawCircle(Player.Instance.Position, SPELLS.R.Range, Color.Transparent);
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.R.Range, Color.Red);
         }
 
         public static void Game_OnTick(EventArgs args)
