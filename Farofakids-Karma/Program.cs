@@ -68,19 +68,6 @@ namespace Farofakids_Karma
                     break;
             }
 
-            if (MENUS.UseEDefense)
-            {
-                foreach (var hero in
-                    ObjectManager.Get<AIHeroClient>()
-                        .Where(
-                            hero =>
-                                hero.IsValidTarget(SPELLS.E.Range) && hero.IsAlly &&
-                                ObjectManager.Get<AIHeroClient>().Count(h => h.IsValidTarget() && h.Distance(hero) < 400) >
-                                1))
-                {
-                    SPELLS.E.Cast(hero);
-                }
-            }
         }
     }
 }

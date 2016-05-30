@@ -19,7 +19,6 @@ namespace Farofakids_Karma
         {
             FarofakidsKarmaMenu = MainMenu.AddMenu("Farofakids Karma", "Farofakids-Karma");
             FarofakidsKarmaMenu.AddGroupLabel("Farofakids Karma");
-            FarofakidsKarmaMenu.Add("URFMODE", new CheckBox("URF MODE: EVER W AND E"));
 
             // Combo Menu
             ComboMenu = FarofakidsKarmaMenu.AddSubMenu("Combo Features", "ComboFeatures");

@@ -32,6 +32,7 @@ namespace Farofakids_Karma
 
         public static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs gapcloser)
         {
+            if (!MENUS.InterruptSpells) return;
             if (gapcloser.Sender.IsValidTarget(300))
             {
                 SPELLS.E.Cast(ObjectManager.Player);
