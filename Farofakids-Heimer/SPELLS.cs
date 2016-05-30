@@ -13,7 +13,7 @@ namespace Farofakids_Heimerdinger
 {
     internal class SPELLS
     {
-        public static Spell.Skillshot Q, Q1, W, W1, E, E1, E2, E3;
+        public static Spell.Skillshot Q, W, W1, E, E1, E2, E3;
         public static Spell.Active R;
 
 
@@ -31,21 +31,59 @@ namespace Farofakids_Heimerdinger
 
         public static float GetComboDamage(Obj_AI_Base enemy)
         {
-            var damage = 0d;
+            var aa = Player.Instance.GetAutoAttackDamage(enemy, true);
 
-            if (Q.IsReady())
-                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+            var damage = aa;
 
-            if (W.IsReady())
-                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
-
-            if (E.IsReady())
+            if (E.IsReady() && MENUS.UseECombo)
                 damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
 
-            if (R.IsReady())
-                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+            if (E.IsReady() && MENUS.UseECombo)
+                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+
+            if (W.IsReady() && MENUS.UseWCombo)
+                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+
+            if (W.IsReady() && MENUS.UseWCombo && MENUS.UseRCombo)
+                damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W) * 2.2f;
 
             return (float)damage;
+        }
+
+        public static float GetWDamage(Obj_AI_Base enemy)
+        {
+            var target = TargetSelector.GetTarget(W.Range + 200, DamageType.Magical);
+            if (target == null) return (float)0;
+            double damage = 0d;
+
+            if (W.IsReady())
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.W);
+
+            return (float)damage * 2;
+        }
+
+        public static float GetW1Damage(Obj_AI_Base enemy)
+        {
+            var target = TargetSelector.GetTarget(W.Range + 200, DamageType.Magical);
+            if (target == null) return (float)0;
+            double damage = 0d;
+
+            if (W1.IsReady() && R.IsReady())
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.W);
+
+            return (float)damage * 2;
+        }
+
+        public static float GetEDamage(Obj_AI_Base enemy)
+        {
+            var target = TargetSelector.GetTarget(W.Range + 200, DamageType.Magical);
+            if (target == null) return (float)0;
+            double damage = 0d;
+
+            if (E.IsReady())
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.E);
+
+            return (float)damage * 2;
         }
 
     }

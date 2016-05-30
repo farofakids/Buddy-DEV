@@ -28,6 +28,7 @@ namespace Farofakids_Heimerdinger
             Game.OnTick += Game_OnTick;
             Drawing.OnDraw += Drawing_OnDraw;
             Interrupter.OnInterruptableSpell += MODES.Interrupter_OnInterruptableSpell;
+            Gapcloser.OnGapcloser += MODES.Gapcloser_OnGapcloser;
 
         }
 
@@ -53,16 +54,16 @@ namespace Farofakids_Heimerdinger
                 case Orbwalker.ActiveModes.Combo:
                     MODES.Combo();
                     break;
-
-                case Orbwalker.ActiveModes.Harass:
-                    MODES.Harras();
-                    break;
             }
-            if (!MENUS.URFMODE) return;
 
-            if (SPELLS.W.IsReady() && !Player.Instance.IsRecalling())
+            if (MENUS.AutoHarras)
             {
-                SPELLS.W.Cast();
+                MODES.Harras();
+            }
+
+            if (MENUS.KS)
+            {
+                MODES.KS();
             }
 
         }

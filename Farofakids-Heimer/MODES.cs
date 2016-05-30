@@ -19,96 +19,227 @@ namespace Farofakids_Heimerdinger
         public static void Interrupter_OnInterruptableSpell(Obj_AI_Base sender, Interrupter.InterruptableSpellEventArgs args)
         {
             if (!MENUS.InterruptSpells) return;
-            SPELLS.Q.Cast(sender);
-            if (sender != null)
-            {
-                var target = TargetSelector.GetTarget(SPELLS.Q.Range, DamageType.Magical);
-                if (target != null)
-                    SPELLS.Q.Cast(target);
-            }
-            if (sender.IsEnemy && args.DangerLevel == DangerLevel.High && SPELLS.W.IsReady() && SPELLS.W.IsInRange(sender))
-            {
-                SPELLS.W.Cast();
-            }
+            if (SPELLS.E.IsReady() && sender.IsValidTarget(SPELLS.E.Range))
+                SPELLS.E.Cast(sender.Position);
+        }
 
+        public static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs gapcloser)
+        {
+            if (!MENUS.AntiGap) return;
+            if (SPELLS.E.IsReady() && gapcloser.Sender.IsValidTarget(SPELLS.E.Range))
+            {
+                SPELLS.E.Cast(gapcloser.End);
+            }
         }
 
         public static void Combo()
         {
-            var tsR = TargetSelector.GetTarget(SPELLS.R.Range, DamageType.Magical);
-
-            foreach (
-                var enemy in
-                    EntityManager.Heroes.Enemies.Where(
-                        enemy => ((TargetSelector.SeletedEnabled && TargetSelector.SelectedTarget == enemy) || MENUS.ComboMenu["UseQ_On" + enemy.ChampionName].Cast<CheckBox>().CurrentValue) &&
-                                 enemy.IsValidTarget(SPELLS.Q.Range + 150) &&
-                                 !enemy.HasBuffOfType(BuffType.SpellShield)))
-            {
-                if (SPELLS.Q.IsReady() && MENUS.UseQCombo)
-                {
-                    var prediction = SPELLS.Q.GetPrediction(enemy);
-                    //if (prediction.HitChance >= MENUS.hitchances[0])
-                    if (prediction.HitChance >= HitChance.Medium)
-                    {
-                        // Cast if hitchance is high enough
-                        if (prediction.HitChance >= HitChance.High)
-                        {
-                            SPELLS.Q.Cast(prediction.CastPosition);
-                        }
-                    }
-                }
-
-                if (SPELLS.W.IsReady() && MENUS.UseWCombo && enemy.IsValidTarget(450))
-                    SPELLS.W.Cast();
-
-                if (SPELLS.E.IsReady() && MENUS.UseECombo && enemy.IsValidTarget(SPELLS.E.Range))
-                    SPELLS.E.Cast();
-
-                if (SPELLS.R.IsReady() && MENUS.UseRCombo && enemy.IsValidTarget(SPELLS.R.Range) && tsR.Health >= SPELLS.GetComboDamage(tsR))
-                {
-                    var useR = (MENUS.ComboMenu["UseR_On" + enemy.ChampionName].Cast<CheckBox>().CurrentValue);
-                    if (useR)
-                    {
-                        SPELLS.R.Cast(tsR);
-                    }
-                }
-            }
-        }
-
-        public static void Harras()
-        {
-            if (Player.Instance.ManaPercent < MENUS.HarassMana)
+            var target = TargetSelector.GetTarget(SPELLS.W.Range, DamageType.Magical);
+            if (target == null)
+                return;
+            var qtarget = TargetSelector.GetTarget(600, DamageType.Magical);
+            if (qtarget == null)
                 return;
 
-            foreach (
-                var enemy in
-                    EntityManager.Heroes.Enemies.Where(
-                        enemy => ((TargetSelector.SeletedEnabled && TargetSelector.SelectedTarget == enemy) || MENUS.ComboMenu["UseQ_On" + enemy.ChampionName].Cast<CheckBox>().CurrentValue) &&
-                                 enemy.IsValidTarget(SPELLS.Q.Range + 150) &&
-                                 !enemy.HasBuffOfType(BuffType.SpellShield)))
-            {
-                if (SPELLS.Q.IsReady() && MENUS.UseQCombo)
+            var wpred = SPELLS.W.GetPrediction(target);
+
+                if (SPELLS.Q.IsReady() && SPELLS.R.IsReady() && MENUS.UseQRCombo &&
+                    MENUS.UseQCombo && qtarget.IsValidTarget(650) &&
+                    Player.Instance.Position.CountEnemiesInRange(650) >= MENUS.QRcount)
                 {
-                    var prediction = SPELLS.Q.GetPrediction(enemy);
-                    //if (prediction.HitChance >= MENUS.hitchances[0])
-                    if (prediction.HitChance >= HitChance.Medium)
+                    SPELLS.R.Cast();
+                //                    SPELLS.Q.Cast(Player.Position.Extend(target.Position, +300));
+                SPELLS.Q.Cast(Player.Instance.ServerPosition.Extend(target.Position, +300).To3D());
+            }
+                else
+                {
+                    if (SPELLS.Q.IsReady() && MENUS.UseQCombo && qtarget.IsValidTarget(650) &&
+
+                        Player.Instance.Position.CountEnemiesInRange(650) >= 1)
                     {
-                        // Cast if hitchance is high enough
-                        if (prediction.HitChance >= HitChance.High)
-                        {
-                            SPELLS.Q.Cast(prediction.CastPosition);
-                        }
+                    SPELLS.Q.Cast(Player.Instance.Position.Extend(target.Position, +300).To3D());
                     }
                 }
+                if (SPELLS.E3.IsReady() && SPELLS.R.IsReady() && MENUS.UseERCombo &&
+                    MENUS.UseRCombo &&
+                    target.Position.CountEnemiesInRange(450 - 250) >=
+                    MENUS.ERcount)
+                {
+                    CastER(target);
+                }
+                else
+                {
+                    if (SPELLS.E.IsReady() && MENUS.UseECombo && target.IsValidTarget(SPELLS.E.Range))
+                    {
+                    //E.CastIfHitchanceEquals(target, HitChance.High, true);
+                    var ePrediction = SPELLS.E.GetPrediction(target);
+                    if (ePrediction.HitChance >= HitChance.High)
+                    {
+                        SPELLS.E.Cast(ePrediction.CastPosition);
+                    }
 
-                if (SPELLS.W.IsReady() && MENUS.UseWCombo && enemy.IsValidTarget(450))
-                    SPELLS.W.Cast();
+                }
+                    if (SPELLS.W.IsReady() && MENUS.UseWRCombo && MENUS.UseRCombo &&
+                        SPELLS.R.IsReady() && target.IsValidTarget(SPELLS.W.Range) &&
+                        wpred.HitChance >= HitChance.High && SPELLS.GetComboDamage(target) >= target.Health)
+                    {
+                        SPELLS.R.Cast();
 
-                if (SPELLS.E.IsReady() && MENUS.UseECombo && enemy.IsValidTarget(SPELLS.E.Range))
-                    SPELLS.E.Cast();
+                    /*     Utility.DelayAction.Add(1010,
+                             () => W.CastIfHitchanceEquals(target, HitChance.High, true));*/
+
+                    Core.DelayAction(() =>
+                    {
+                        {
+                            SPELLS.W.Cast(target);
+                        }
+                    }, 1010);
+                }
+                    else
+                    {
+                        if (SPELLS.W.IsReady() && MENUS.UseWCombo && target.IsValidTarget(SPELLS.W.Range))
+                        {
+                        if (wpred.HitChance >= HitChance.High)
+                        { 
+                        SPELLS.W.Cast(target);
+                        }
+                    }
+                    }
+                }
+            
+        }
+
+        internal static void KS()
+        {
+            var target = TargetSelector.GetTarget(SPELLS.E.Range + 200, DamageType.Magical);
+            if (target == null) return;
+            if (target.Health < SPELLS.GetEDamage(target))
+            {
+                var ePrediction = SPELLS.E.GetPrediction(target);
+                if (ePrediction.HitChance >= HitChance.Medium)
+                {
+                    SPELLS.E.Cast(ePrediction.CastPosition);
+                }
+                if (ePrediction.HitChance >= HitChance.High)
+                {
+                    SPELLS.E.Cast(ePrediction.CastPosition);
+                }
+                return;
+            }
+
+            target = TargetSelector.GetTarget(SPELLS.W.Range + 200, DamageType.Magical);
+            if (target == null) return;
+            if (target.Health < SPELLS.GetWDamage(target))
+            {
+                var prediction = SPELLS.W.GetPrediction(target);
+                if (prediction.HitChance >= HitChance.High && prediction.CollisionObjects.Count(h => h.IsEnemy && !h.IsDead && h is Obj_AI_Minion) < 2)
+                {
+
+                    SPELLS.W.Cast(prediction.CastPosition);
+                    return;
+                }
+            }
+
+            target = TargetSelector.GetTarget(SPELLS.W.Range + 200, DamageType.Magical);
+            if (target == null) return;
+            if (target.Health < SPELLS.GetW1Damage(target) && SPELLS.R.IsReady())
+            {
+                var prediction = SPELLS.W.GetPrediction(target);
+                if (prediction.HitChance >= HitChance.High && prediction.CollisionObjects.Count(h => h.IsEnemy && !h.IsDead && h is Obj_AI_Minion) < 2)
+                {
+                    SPELLS.R.Cast();
+                    SPELLS.W.Cast(prediction.CastPosition);
+                    SPELLS.W.Cast(prediction.CastPosition);
+                    return;
+                }
             }
         }
 
+        internal static void Harras()
+        {
+            var target = TargetSelector.GetTarget(SPELLS.W.Range, DamageType.Magical);
+            if (target == null || !target.IsValid)
+                return;
+            if (SPELLS.W.IsReady() && target.IsValidTarget() && MENUS.AutoHarras && Player.Instance.ManaPercent  > MENUS.HarassMana)
+            {
+                var wPrediction = SPELLS.W.GetPrediction(target);
+                if (wPrediction.HitChance >= HitChance.High)
+                {
+                    SPELLS.W.Cast(wPrediction.CastPosition);
+                }
+            }
+        }
+
+        private static void CastER(Obj_AI_Base target)
+        {
+            PredictionResult prediction;
+
+            if (ObjectManager.Player.Distance(target) < SPELLS.E1.Range)
+            {
+                var oldrange = SPELLS.E1.Range;
+                SPELLS.E1.Range = SPELLS.E2.Range;
+                prediction = SPELLS.E1.GetPrediction(target);
+                SPELLS.E1.Range = oldrange;
+            }
+            else if (ObjectManager.Player.Distance(target) < SPELLS.E2.Range)
+            {
+                var oldrange = SPELLS.E2.Range;
+                SPELLS.E2.Range = SPELLS.E3.Range;
+                prediction = SPELLS.E2.GetPrediction(target);
+                SPELLS.E2.Range = oldrange;
+            }
+            else if (ObjectManager.Player.Distance(target) < SPELLS.E3.Range)
+            {
+                prediction = SPELLS.E3.GetPrediction(target);
+            }
+            else
+            {
+                return;
+            }
+
+            if (prediction.HitChance >= HitChance.High)
+            {
+                if (ObjectManager.Player.ServerPosition.Distance(prediction.CastPosition) <= SPELLS.E1.Range + SPELLS.E1.Width)
+                {
+                    Vector3 p;
+                    if (ObjectManager.Player.ServerPosition.Distance(prediction.CastPosition) > 300)
+                    {
+                        p = prediction.CastPosition -
+                            100 *
+                            (prediction.CastPosition.To2D() - ObjectManager.Player.ServerPosition.To2D()).Normalized()
+                                .To3D();
+                    }
+                    else
+                    {
+                        p = prediction.CastPosition;
+                    }
+                    SPELLS.R.Cast();
+                    SPELLS.E1.Cast(p);
+                }
+                else if (ObjectManager.Player.ServerPosition.Distance(prediction.CastPosition) <=
+                         ((SPELLS.E1.Range + SPELLS.E1.Range) / 2))
+                {
+                    var p = ObjectManager.Player.ServerPosition.To2D()
+                        .Extend(prediction.CastPosition.To2D(), SPELLS.E1.Range - 100);
+                    {
+                        SPELLS.R.Cast();
+                        SPELLS.E1.Cast(p.To3D());
+                    }
+                }
+                else
+                {
+                    var p = ObjectManager.Player.ServerPosition.To2D() +
+                            SPELLS.E1.Range *
+                            (prediction.CastPosition.To2D() - ObjectManager.Player.ServerPosition.To2D()).Normalized
+                                ();
+
+                    {
+                        SPELLS.R.Cast();
+                        SPELLS.E1.Cast(p.To3D());
+                    }
+                }
+            }
+        }
     }
 
 }

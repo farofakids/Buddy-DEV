@@ -13,7 +13,7 @@ namespace Farofakids_Heimerdinger
 {
     internal class MENUS
     {
-        public static Menu FarofakidsHeimerdingerMenu, ComboMenu, HarassMenu, DrawingMenu, MiscMenu;
+        private static Menu FarofakidsHeimerdingerMenu, ComboMenu, HarassMenu, DrawingMenu, MiscMenu;
 
         public static void Initialize()
         {
@@ -24,9 +24,15 @@ namespace Farofakids_Heimerdinger
             ComboMenu = FarofakidsHeimerdingerMenu.AddSubMenu("Combo Features", "ComboFeatures");
             ComboMenu.AddGroupLabel("Combo Features");
             ComboMenu.Add("UseQCombo", new CheckBox("Use Q"));
+            ComboMenu.Add("UseQRCombo", new CheckBox("Use Q Upgrade"));
+            ComboMenu.Add("QRcount", new Slider("Minimum Enemies for Q upgrade", 2, 1, 5));
             ComboMenu.Add("UseWCombo", new CheckBox("Use W"));
+            ComboMenu.Add("UseWRCombo", new CheckBox("Use W Upgrade"));
             ComboMenu.Add("UseECombo", new CheckBox("Use E"));
+            ComboMenu.Add("UseERCombo", new CheckBox("Use ER"));
+            ComboMenu.Add("ERcount", new Slider("Minimum Enemies for E upgrade", 3, 1, 5));
             ComboMenu.Add("UseRCombo", new CheckBox("Use R"));
+            ComboMenu.Add("KS", new CheckBox("Killsteal"));
 
             // Harass Menu
             HarassMenu = FarofakidsHeimerdingerMenu.AddSubMenu("Harass Features", "HarassFeatures");
@@ -47,17 +53,22 @@ namespace Farofakids_Heimerdinger
             MiscMenu = FarofakidsHeimerdingerMenu.AddSubMenu("Settings", "Settings");
             MiscMenu.AddGroupLabel("Settings");
             MiscMenu.AddLabel("Interrupter");
-            MiscMenu.Add("InterruptSpells", new CheckBox("Interrupt spells"));
+            MiscMenu.Add("InterruptSpells", new CheckBox("Interrupt spells - E"));
+            MiscMenu.Add("AntiGap", new CheckBox("Anti Gapcloser - E"));
 
         }
 
-        public static bool URFMODE { get { return FarofakidsHeimerdingerMenu["URFMODE"].Cast<CheckBox>().CurrentValue; } }
-
         //combo
         public static bool UseQCombo { get { return ComboMenu["UseQCombo"].Cast<CheckBox>().CurrentValue; } }
+        public static bool UseQRCombo { get { return ComboMenu["UseQRCombo"].Cast<CheckBox>().CurrentValue; } }
+        public static int QRcount { get { return ComboMenu["QRcount"].Cast<Slider>().CurrentValue; } }
         public static bool UseWCombo { get { return ComboMenu["UseWCombo"].Cast<CheckBox>().CurrentValue; } }
+        public static bool UseWRCombo { get { return ComboMenu["UseWRCombo"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseECombo { get { return ComboMenu["UseECombo"].Cast<CheckBox>().CurrentValue; } }
+        public static bool UseERCombo { get { return ComboMenu["UseERCombo"].Cast<CheckBox>().CurrentValue; } }
+        public static int ERcount { get { return ComboMenu["ERcount"].Cast<Slider>().CurrentValue; } }
         public static bool UseRCombo { get { return ComboMenu["UseRCombo"].Cast<CheckBox>().CurrentValue; } }
+        public static bool KS { get { return ComboMenu["KS"].Cast<CheckBox>().CurrentValue; } }
 
         //harras
         public static bool AutoHarras { get { return HarassMenu["AutoHarras"].Cast<CheckBox>().CurrentValue; } }
@@ -71,6 +82,7 @@ namespace Farofakids_Heimerdinger
 
         //misc
         public static bool InterruptSpells { get { return MiscMenu["InterruptSpells"].Cast<CheckBox>().CurrentValue; } }
+        public static bool AntiGap { get { return MiscMenu["AntiGap"].Cast<CheckBox>().CurrentValue; } }
 
     }
 }
