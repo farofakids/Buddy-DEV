@@ -3,33 +3,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EloBuddy;
-using EloBuddy.SDK.Events;
 
-namespace Farofakids_Heimer
+using EloBuddy;
+using EloBuddy.SDK;
+using EloBuddy.SDK.Events;
+using SharpDX;
+using Color = System.Drawing.Color;
+
+namespace Farofakids_Heimerdinger
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+
+        public static void Main()
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
         }
 
-        private static void Loading_OnLoadingComplete(EventArgs args)
+        public static void Loading_OnLoadingComplete(EventArgs args)
         {
-            try
+            if (Player.Instance.BaseSkinName != "Heimerdinger") return;
+            SPELLS.Initialize();
+            MENUS.Initialize();
+            Game.OnTick += Game_OnTick;
+            Drawing.OnDraw += Drawing_OnDraw;
+            Interrupter.OnInterruptableSpell += MODES.Interrupter_OnInterruptableSpell;
+
+        }
+
+
+        public static void Drawing_OnDraw(EventArgs args)
+        {
+            if (MENUS.QRange && SPELLS.Q.Handle.IsLearned)
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.Q.Range, Color.Red);
+            if (MENUS.WRange && SPELLS.W.Handle.IsLearned)
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.W.Range, Color.Transparent);
+            if (MENUS.ERange && SPELLS.E.Handle.IsLearned)
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.E.Range, Color.Transparent);
+            if (MENUS.RRange && SPELLS.R.Handle.IsLearned)
+                Drawing.DrawCircle(Player.Instance.Position, SPELLS.R.Range, Color.Transparent);
+        }
+
+        public static void Game_OnTick(EventArgs args)
+        {
+            if (Player.Instance.IsDead) return;
+
+            switch (Orbwalker.ActiveModesFlags)
             {
-                switch (ObjectManager.Player.Hero)
-                {
-                    case Champion.Heimerdinger:
-                       Heimerdinger.Initialize();
-                        break;
-                }
+                case Orbwalker.ActiveModes.Combo:
+                    MODES.Combo();
+                    break;
+
+                case Orbwalker.ActiveModes.Harass:
+                    MODES.Harras();
+                    break;
             }
-            catch (Exception exp)
+            if (!MENUS.URFMODE) return;
+
+            if (SPELLS.W.IsReady() && !Player.Instance.IsRecalling())
             {
-                Console.Write(exp);
+                SPELLS.W.Cast();
             }
+
         }
     }
 }

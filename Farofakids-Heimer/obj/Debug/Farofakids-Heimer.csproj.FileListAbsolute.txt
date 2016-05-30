@@ -11,3 +11,12 @@ C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin
 C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.exe
 C:\Users\Bruno\Desktop\Farofakids-Heimer\Farofakids-Heimer\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.pdb
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.exe.config
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.exe
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.pdb
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.csprojResolveAssemblyReference.cache
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\obj\Debug\Farofakids-Heimer.csproj.GenerateResource.Cache
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.exe
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\bin\Debug\Farofakids-Heimer.pdb
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bruno\Documents\GitHub\Buddy-dev\Farofakids-Heimer\obj\Debug\Farofakids_Heimer.Properties.Resources.resources
