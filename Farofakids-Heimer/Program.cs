@@ -56,7 +56,7 @@ namespace Farofakids_Heimerdinger
                     break;
             }
 
-            if (MENUS.AutoHarras)
+            if (MENUS.AutoHarras && !SPELLS.R.IsReady())
             {
                 MODES.Harras();
             }

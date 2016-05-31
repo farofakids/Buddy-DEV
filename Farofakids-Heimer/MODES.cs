@@ -41,14 +41,11 @@ namespace Farofakids_Heimerdinger
             if (qtarget == null)
                 return;
 
-            var wpred = SPELLS.W.GetPrediction(target);
-
                 if (SPELLS.Q.IsReady() && SPELLS.R.IsReady() && MENUS.UseQRCombo &&
                     MENUS.UseQCombo && qtarget.IsValidTarget(650) &&
                     Player.Instance.Position.CountEnemiesInRange(650) >= MENUS.QRcount)
                 {
                     SPELLS.R.Cast();
-                //                    SPELLS.Q.Cast(Player.Position.Extend(target.Position, +300));
                 SPELLS.Q.Cast(Player.Instance.ServerPosition.Extend(target.Position, +300).To3D());
             }
                 else
@@ -71,7 +68,6 @@ namespace Farofakids_Heimerdinger
                 {
                     if (SPELLS.E.IsReady() && MENUS.UseECombo && target.IsValidTarget(SPELLS.E.Range))
                     {
-                    //E.CastIfHitchanceEquals(target, HitChance.High, true);
                     var ePrediction = SPELLS.E.GetPrediction(target);
                     if (ePrediction.HitChance >= HitChance.High)
                     {
@@ -81,27 +77,32 @@ namespace Farofakids_Heimerdinger
                 }
                     if (SPELLS.W.IsReady() && MENUS.UseWRCombo && MENUS.UseRCombo &&
                         SPELLS.R.IsReady() && target.IsValidTarget(SPELLS.W.Range) &&
-                        wpred.HitChance >= HitChance.High && SPELLS.GetComboDamage(target) >= target.Health)
+                        SPELLS.GetComboDamage(target) >= target.Health)
                     {
-                        SPELLS.R.Cast();
+                    var wPrediction = SPELLS.W.GetPrediction(target);
+                    SPELLS.R.Cast();
 
                     /*     Utility.DelayAction.Add(1010,
                              () => W.CastIfHitchanceEquals(target, HitChance.High, true));*/
-
-                    Core.DelayAction(() =>
+                    if (wPrediction.HitChance >= HitChance.High)
                     {
+                        Core.DelayAction(() =>
                         {
-                            SPELLS.W.Cast(target);
-                        }
-                    }, 1010);
+                            {
+                                SPELLS.W.Cast(wPrediction.CastPosition);
+                            }
+                        }, SPELLS.W.CastDelay);
+                    }
+
                 }
                     else
                     {
                         if (SPELLS.W.IsReady() && MENUS.UseWCombo && target.IsValidTarget(SPELLS.W.Range))
                         {
-                        if (wpred.HitChance >= HitChance.High)
-                        { 
-                        SPELLS.W.Cast(target);
+                        var wPrediction = SPELLS.W.GetPrediction(target);
+                        if (wPrediction.HitChance >= HitChance.High)
+                        {
+                            SPELLS.W.Cast(wPrediction.CastPosition);
                         }
                     }
                     }
@@ -148,7 +149,6 @@ namespace Farofakids_Heimerdinger
                 if (prediction.HitChance >= HitChance.High && prediction.CollisionObjects.Count(h => h.IsEnemy && !h.IsDead && h is Obj_AI_Minion) < 2)
                 {
                     SPELLS.R.Cast();
-                    SPELLS.W.Cast(prediction.CastPosition);
                     SPELLS.W.Cast(prediction.CastPosition);
                     return;
                 }
