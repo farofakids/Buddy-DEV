@@ -19,6 +19,9 @@ namespace Farofakids_Activator
         public static readonly Item Cutlass = new Item(ItemId.Bilgewater_Cutlass);
         public static readonly Item Botrk = new Item(ItemId.Blade_of_the_Ruined_King);
         public static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade);
+        protected static readonly Item Gunblade = new Item(ItemId.Hextech_Gunblade);
+        protected static readonly Item ProtoBelt = new Item(ItemId.Will_of_the_Ancients);
+        protected static readonly Item GLP = new Item(3030);
 
 
         public static bool HasSpell(string s)
@@ -98,6 +101,11 @@ namespace Farofakids_Activator
             get { return MENU["enemyMinHPBotrk"].Cast<Slider>().CurrentValue; }
         }
 
+        public static bool UseHextech
+        {
+            get { return MENU["useHextech"].Cast<CheckBox>().CurrentValue; }
+        }
+
         #endregion bool & int MENUVALLUES
 
         private static void Loading_OnLoadingComplete(EventArgs args)
@@ -139,6 +147,7 @@ namespace Farofakids_Activator
             MENU.Add("useYoumuu", new CheckBox("Use Youmuu's Ghostblade"));
             MENU.Add("useCutlass", new CheckBox("Use Botrk"));
             MENU.Add("useTiamat", new CheckBox("Use Tiamat or Hydra or Titanic"));
+            MENU.Add("useHextech", new CheckBox("Use Hextech family"));
             Chat.Print("Farofakids-Activator: ITENS Loaded", System.Drawing.Color.HotPink);
 
             Game.OnUpdate += Game_OnUpdate;
@@ -270,13 +279,13 @@ namespace Farofakids_Activator
                 {
                     Youmuu.Cast();
                 }
-                if (UseBotrk && Item.HasItem(Cutlass.Id) && Item.CanUseItem(Cutlass.Id) &&
+                if (UseBotrk && Cutlass.IsOwned() && Cutlass.IsReady() &&
                     Player.Instance.HealthPercent < MinHPBotrk &&
                     target.HealthPercent < EnemyMinHPBotrk)
                 {
-                    Item.UseItem(Cutlass.Id, target);
+                    Cutlass.Cast(target);
                 }
-                if (UseBotrk && Item.HasItem(Botrk.Id) && Item.CanUseItem(Botrk.Id) &&
+                if (UseBotrk && Botrk.IsOwned() && Botrk.IsReady() &&
                     Player.Instance.HealthPercent < MinHPBotrk &&
                     target.HealthPercent < EnemyMinHPBotrk)
                 {
@@ -285,6 +294,28 @@ namespace Farofakids_Activator
             }
 
             #endregion Yomuu & Bortk
+
+            #region Hextech
+
+            var targetHextech = TargetSelector.GetTarget(600, DamageType.Magical);
+            if (targetHextech != null)
+            {
+                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && UseHextech && Gunblade.IsOwned() && Gunblade.IsReady())
+                {
+                    Gunblade.Cast(targetHextech);
+                }
+                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && UseHextech && ProtoBelt.IsOwned() && ProtoBelt.IsReady())
+                {
+                    ProtoBelt.Cast(targetHextech.ServerPosition);
+                }
+                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && UseHextech && GLP.IsOwned() && GLP.IsReady())
+                {
+                    GLP.Cast(targetHextech.ServerPosition);
+                }
+
+            }
+
+            #endregion Hextech
         }
 
         private static void OnPostAttack(AttackableUnit target, EventArgs args)
