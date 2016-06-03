@@ -110,6 +110,21 @@ namespace Farofakids_Heimerdinger
             
         }
 
+        internal static void Harras()
+        {
+            var target = TargetSelector.GetTarget(SPELLS.W.Range, DamageType.Magical);
+            if (target == null || !target.IsValid)
+                return;
+            if (SPELLS.W.IsReady() && target.IsValidTarget() && MENUS.UseWHarras && Player.Instance.ManaPercent > MENUS.HarassMana)
+            {
+                var wPrediction = SPELLS.W.GetPrediction(target);
+                if (wPrediction.HitChance >= HitChance.High)
+                {
+                    SPELLS.W.Cast(wPrediction.CastPosition);
+                }
+            }
+        }
+
         internal static void KS()
         {
             var target = TargetSelector.GetTarget(SPELLS.E.Range + 200, DamageType.Magical);
@@ -155,7 +170,7 @@ namespace Farofakids_Heimerdinger
             }
         }
 
-        internal static void Harras()
+        internal static void AutoHarras()
         {
             var target = TargetSelector.GetTarget(SPELLS.W.Range, DamageType.Magical);
             if (target == null || !target.IsValid)

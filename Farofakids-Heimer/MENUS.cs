@@ -37,6 +37,7 @@ namespace Farofakids_Heimerdinger
             // Harass Menu
             HarassMenu = FarofakidsHeimerdingerMenu.AddSubMenu("Harass Features", "HarassFeatures");
             HarassMenu.AddGroupLabel("Harass Features");
+            HarassMenu.Add("UseWHarras", new CheckBox("Use W"));
             HarassMenu.Add("AutoHarras", new CheckBox("Auto Harass W"));
             HarassMenu.AddSeparator(1);
             HarassMenu.Add("HarassMana", new Slider("Mana Limiter at Mana %", 40));
@@ -71,6 +72,7 @@ namespace Farofakids_Heimerdinger
         public static bool KS { get { return ComboMenu["KS"].Cast<CheckBox>().CurrentValue; } }
 
         //harras
+        public static bool UseWHarras { get { return HarassMenu["UseWHarras"].Cast<CheckBox>().CurrentValue; } }
         public static bool AutoHarras { get { return HarassMenu["AutoHarras"].Cast<CheckBox>().CurrentValue; } }
         public static int HarassMana { get { return HarassMenu["HarassMana"].Cast<Slider>().CurrentValue; } }
 

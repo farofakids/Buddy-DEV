@@ -10,11 +10,10 @@ using EloBuddy.SDK.Events;
 using SharpDX;
 using Color = System.Drawing.Color;
 
-namespace Farofakids_Heimerdinger
+namespace Farofakids_MissFortune
 {
     internal class Program
     {
-
         public static void Main()
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
@@ -22,16 +21,16 @@ namespace Farofakids_Heimerdinger
 
         public static void Loading_OnLoadingComplete(EventArgs args)
         {
-            if (Player.Instance.BaseSkinName != "Heimerdinger") return;
+            if (Player.Instance.BaseSkinName != "MissFortune") return;
             SPELLS.Initialize();
             MENUS.Initialize();
-            Game.OnTick += Game_OnTick;
             Drawing.OnDraw += Drawing_OnDraw;
-            Interrupter.OnInterruptableSpell += MODES.Interrupter_OnInterruptableSpell;
             Gapcloser.OnGapcloser += MODES.Gapcloser_OnGapcloser;
-
+            Obj_AI_Base.OnProcessSpellCast += MODES.Obj_AI_Base_OnProcessSpellCast;
+            Obj_AI_Base.OnSpellCast += MODES.Obj_AI_Base_OnSpellCas;
+            Orbwalker.OnPostAttack += MODES.Orbwalker_OnPostAttack;
+            Game.OnUpdate += MODES.Game_OnUpdate;
         }
-
 
         public static void Drawing_OnDraw(EventArgs args)
         {
@@ -45,30 +44,5 @@ namespace Farofakids_Heimerdinger
                 Drawing.DrawCircle(Player.Instance.Position, SPELLS.R.Range, Color.Red);
         }
 
-        public static void Game_OnTick(EventArgs args)
-        {
-            if (Player.Instance.IsDead) return;
-
-            switch (Orbwalker.ActiveModesFlags)
-            {
-                case Orbwalker.ActiveModes.Combo:
-                    MODES.Combo();
-                    break;
-                case Orbwalker.ActiveModes.Harass:
-                    MODES.Harras();
-                    break;
-            }
-
-            if (MENUS.AutoHarras && !SPELLS.R.IsReady())
-            {
-                MODES.AutoHarras();
-            }
-
-            if (MENUS.KS)
-            {
-                MODES.KS();
-            }
-
-        }
     }
 }
