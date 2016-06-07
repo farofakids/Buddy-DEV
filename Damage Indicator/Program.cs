@@ -105,7 +105,7 @@ namespace Damage_Indicator
                     if (WA.IsReady()) damage = damage + Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
                     if (QA.IsReady())
                     {
-                        var qnhan = 3;//4 - QStack;
+                        var qnhan = 2;//4 - QStack;
                         damage = damage + Player.Instance.GetSpellDamage(enemy, SpellSlot.Q) * qnhan + (float)Player.Instance.GetAutoAttackDamage(enemy) * qnhan * (1 + passivenhan);
                     }
                     damage = damage + (float)Player.Instance.GetAutoAttackDamage(enemy) * (1 + passivenhan);
