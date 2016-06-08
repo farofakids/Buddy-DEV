@@ -46,6 +46,7 @@ namespace Damage_Indicator
             EA = new Spell.Active(SpellSlot.E);
             RA = new Spell.Active(SpellSlot.R);
 
+             
             IGNITE = new Spell.Targeted(SpellSlot.Unknown, 0);
 
             Chat.Print("Damage Indicator Loaded Succesfully", Color.DodgerBlue);
