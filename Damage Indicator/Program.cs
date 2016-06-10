@@ -19,6 +19,9 @@ namespace Damage_Indicator
         public static Menu menu;
 
         public static Spell.Active QA, WA, EA, RA;
+        /*public static Spell.Skillshot QS, WS, ES, RS;
+        public static Spell.Targeted QT, WT, ET, RT;
+        public static Spell.Chargeable QC, WC, EC, RC;*/
 
         public static Item Hydra = new Item((int)ItemId.Ravenous_Hydra_Melee_Only, 400);
         public static Item Tiamat = new Item((int)ItemId.Tiamat_Melee_Only, 400);
@@ -46,7 +49,21 @@ namespace Damage_Indicator
             EA = new Spell.Active(SpellSlot.E);
             RA = new Spell.Active(SpellSlot.R);
 
-             
+            /*QS = new Spell.Skillshot(SpellSlot.Q, 0, SkillShotType.Linear);
+            WS = new Spell.Skillshot(SpellSlot.W, 0, SkillShotType.Linear);
+            ES = new Spell.Skillshot(SpellSlot.E, 0, SkillShotType.Linear);
+            RS = new Spell.Skillshot(SpellSlot.R, 0, SkillShotType.Linear);
+
+            QT = new Spell.Targeted(SpellSlot.Q, 0);
+            WT = new Spell.Targeted(SpellSlot.W, 0);
+            ET = new Spell.Targeted(SpellSlot.E, 0);
+            RT = new Spell.Targeted(SpellSlot.R, 0);
+
+            QC = new Spell.Chargeable(SpellSlot.Q, 0, 0, 0);
+            WC = new Spell.Chargeable(SpellSlot.W, 0, 0, 0);
+            EC = new Spell.Chargeable(SpellSlot.E, 0, 0, 0);
+            RC = new Spell.Chargeable(SpellSlot.R, 0, 0, 0);*/
+
             IGNITE = new Spell.Targeted(SpellSlot.Unknown, 0);
 
             Chat.Print("Damage Indicator Loaded Succesfully", Color.DodgerBlue);
@@ -55,7 +72,7 @@ namespace Damage_Indicator
 
         private static void OnMenuLoad()
         {
-            menu = MainMenu.AddMenu("Damage Indicator", "DamageIndicator");
+            menu = MainMenu.AddMenu("Damage Indicator", "Damage Indicator");
             menu.AddGroupLabel("Draw");
             menu.Add("Dind", new CheckBox("Draw Damage Indicator"));
             menu.AddSeparator(150);
@@ -83,7 +100,9 @@ namespace Damage_Indicator
             if (enemy != null)
             {
                 var damage = 0d;
-                
+
+                damage = damage += Player.Instance.GetAutoAttackDamage(enemy, true);
+
                 if (Hydra.IsReady() && Hydra.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
                 if (Tiamat.IsReady() && Tiamat.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Ravenous_Hydra_Melee_Only);
                 if (BOTRK.IsReady() && BOTRK.IsOwned()) damage = damage + Player.Instance.GetItemDamage(enemy, ItemId.Blade_of_the_Ruined_King);
@@ -93,39 +112,26 @@ namespace Damage_Indicator
 
                 if (IGNITE.IsReady()) damage += Player.Instance.GetSummonerSpellDamage(enemy, DamageLibrary.SummonerSpells.Ignite);
 
-                if (Player.Instance.ChampionName == "Riven")
-                {
-                    float passivenhan = 0;
-                    if (Player.Instance.Level >= 18) { passivenhan = 0.5f; }
-                    else if (Player.Instance.Level >= 15) { passivenhan = 0.45f; }
-                    else if (Player.Instance.Level >= 12) { passivenhan = 0.4f; }
-                    else if (Player.Instance.Level >= 9) { passivenhan = 0.35f; }
-                    else if (Player.Instance.Level >= 6) { passivenhan = 0.3f; }
-                    else if (Player.Instance.Level >= 3) { passivenhan = 0.25f; }
-                    else { passivenhan = 0.2f; }
-                    if (WA.IsReady()) damage = damage + Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
-                    if (QA.IsReady())
-                    {
-                        var qnhan = 2;//4 - QStack;
-                        damage = damage + Player.Instance.GetSpellDamage(enemy, SpellSlot.Q) * qnhan + (float)Player.Instance.GetAutoAttackDamage(enemy) * qnhan * (1 + passivenhan);
-                    }
-                    damage = damage + (float)Player.Instance.GetAutoAttackDamage(enemy) * (1 + passivenhan);
-                    if (RA.IsReady())
-                    {
-                        return (float)damage * 1.2f + Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
-                    }
-                    return (float)damage;
-                }
-
-                else
-                {
-                damage = damage += Player.Instance.GetAutoAttackDamage(enemy, true);
                 if (QA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
                 if (WA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
                 if (EA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
                 if (RA.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
-                    return (float)damage;
-                }
+
+                //if (QS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (ES.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RS.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+
+                //if (QT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (ET.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RT.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+
+                //if (QC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.Q);
+                //if (WC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.W);
+                //if (EC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E);
+                //if (RC.IsReady()) damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.R);
+                return (float)damage;
             }
             return 0;
         }
