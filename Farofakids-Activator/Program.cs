@@ -148,7 +148,7 @@ namespace Farofakids_Activator
                 MENU.AddSeparator();
             }
             MENU.AddLabel("POTIONS");
-            MENU.Add("usePotions", new CheckBox("Use Zhonyas"));
+            MENU.Add("usePotions", new CheckBox("Use Potions"));
             MENU.Add("usePotionsheal", new Slider("Potions at Health (%)", 50));
 
             MENU.AddLabel("ITENS");
