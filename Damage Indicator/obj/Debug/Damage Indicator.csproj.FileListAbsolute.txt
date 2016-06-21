@@ -34,3 +34,6 @@ C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\SharpDX.Dir
 C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Newtonsoft.Json.dll
 C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\EloBuddy.Sandbox.dll
 C:\Users\bruno\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.csprojResolveAssemblyReference.cache
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Damage Indicator\bin\Debug\Damage Indicator.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Damage Indicator\obj\Debug\Damage Indicator.pdb

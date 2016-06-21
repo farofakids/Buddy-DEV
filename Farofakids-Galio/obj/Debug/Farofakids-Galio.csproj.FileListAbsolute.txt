@@ -22,3 +22,6 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Galio\bin\Debug\SharpDX.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Galio\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Galio\bin\Debug\EloBuddy.Sandbox.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Galio\obj\Debug\Farofakids-Galio.csprojResolveAssemblyReference.cache
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Galio\bin\Debug\Farofakids-Galio.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Galio\obj\Debug\Farofakids-Galio.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Galio\obj\Debug\Farofakids-Galio.pdb

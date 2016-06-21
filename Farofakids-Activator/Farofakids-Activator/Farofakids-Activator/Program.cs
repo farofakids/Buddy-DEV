@@ -51,6 +51,16 @@ namespace Farofakids_Activator
             get { return MENU["useCleanse"].Cast<CheckBox>().CurrentValue; }
         }
 
+        public static int UsePotionsheal
+        {
+            get { return MENU["UsePotionsheal"].Cast<Slider>().CurrentValue; }
+        }
+
+        public static bool UsePotions
+        {
+            get { return MENU["UsePotions"].Cast<CheckBox>().CurrentValue; }
+        }
+
         public static int UseZhonyaheal
         {
             get { return MENU["useZhonyaheal"].Cast<Slider>().CurrentValue; }
@@ -137,6 +147,10 @@ namespace Farofakids_Activator
                 Chat.Print("Farofakids-Activator: Cleanse Loaded", System.Drawing.Color.Green);
                 MENU.AddSeparator();
             }
+            MENU.AddLabel("POTIONS");
+            MENU.Add("usePotions", new CheckBox("Use Zhonyas"));
+            MENU.Add("usePotionsheal", new Slider("Potions at Health (%)", 50));
+
             MENU.AddLabel("ITENS");
             MENU.Add("useZhonyas", new CheckBox("Use Zhonyas"));
             MENU.Add("useZhonyaheal", new Slider("Zhonya at Health (%)", 30));
@@ -204,13 +218,13 @@ namespace Farofakids_Activator
 
             if (Heal != null)
             {
-                    if (UseHeal && Heal.IsReady())
+                if (UseHeal && Heal.IsReady())
+                {
+                    if (Player.Instance.HealthPercent <= UseHealheal)
                     {
-                        if (Player.Instance.HealthPercent <= UseHealheal)
-                        {
-                            Heal.Cast();
-                        }
+                        Heal.Cast();
                     }
+                }
             }
 
             #endregion heal
@@ -269,6 +283,25 @@ namespace Farofakids_Activator
             }
 
             #endregion Qss
+
+            #region potions
+
+            if (UsePotions && !Player.Instance.IsInShopRange() && Player.Instance.HealthPercent <= UsePotionsheal)
+            {
+                if (!(Player.Instance.HasBuff("RegenerationPotion") || Player.Instance.HasBuff("ItemCrystalFlaskJungle") || Player.Instance.HasBuff("ItemMiniRegenPotion") || Player.Instance.HasBuff("ItemCrystalFlask") || Player.Instance.HasBuff("ItemDarkCrystalFlask")))
+                { 
+                    InventorySlot[] inv = Player.Instance.InventoryItems;
+                foreach (var item in inv)
+                {
+                    if ((item.Id == ItemId.Health_Potion || item.Id == ItemId.Hunters_Potion || item.Id == ItemId.Corrupting_Potion || item.Id == ItemId.Refillable_Potion || item.Id == ItemId.Total_Biscuit_of_Rejuvenation) && item.CanUseItem())
+                    {
+                        item.Cast();
+                    }
+                }
+                }
+            }
+
+            #endregion potions
 
             #region Yomuu & Bortk
 

@@ -22,3 +22,15 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\EloBu
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\UniversalGankAlerter.csprojResolveAssemblyReference.cache
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.exe
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.pdb
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\TheCheater.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.pdb
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\TheCheater.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\TheCheater.pdb
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\EloBuddy.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\EloBuddy.SDK.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\SharpDX.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\Newtonsoft.Json.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\EloBuddy.Sandbox.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\UniversalGankAlerter.csprojResolveAssemblyReference.cache
