@@ -29,7 +29,7 @@ namespace FedKatarinaV2
 
             if (r && Program.R.IsReady())
             {
-                totaldamage += QDamage(target);
+                totaldamage += RDamage(target);
             }
             /*
             if (ignite && Program.Ignite != null && Program.Ignite.IsReady() && Program.Ignite.IsInRange(target))

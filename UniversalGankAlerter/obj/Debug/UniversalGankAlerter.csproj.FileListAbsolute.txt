@@ -2,7 +2,6 @@ C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\Th
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\TheCheater.exe
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\TheCheater.pdb
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\Newtonsoft.Json.dll
-C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\bin\Release\EloBuddy.Sandbox.dll
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\UniversalGankAlerter.csprojResolveAssemblyReference.cache
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.exe
 C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\UniversalGankAlerter\obj\Debug\TheCheater.pdb
