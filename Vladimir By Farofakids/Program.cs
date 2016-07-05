@@ -274,7 +274,7 @@ namespace Vladimir_By_Farofakids
                 var minion =
                     EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, Q.Range)
                     .FirstOrDefault(
-                        x => /*Player.Instance.GetSpellDamage(x, SpellSlot.Q)*/Qdamage(x) > x.Health);
+                        x => Player.Instance.GetSpellDamage(x, SpellSlot.Q)/*Qdamage(x)*/ > x.Health);
 
                 if (minion != null)
                 {
@@ -302,7 +302,7 @@ namespace Vladimir_By_Farofakids
 
         #region DAMAGE
 
-        private static float DamageToUnit(Obj_AI_Base hero)
+        private static float DamageToUnit(AIHeroClient hero)
         {
             float dmg = 0;
 
@@ -328,25 +328,25 @@ namespace Vladimir_By_Farofakids
             return dmg;
         }
 
-        private static float Qdamage(Obj_AI_Base hero)
+        private static float Qdamage(AIHeroClient hero)
         {
             return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
              new[] { 0, 80, 100, 120, 140, 160 }[Q.Level] + (Player.Instance.TotalMagicalDamage * 0.45f));
         }
 
-        private static float Wdamage(Obj_AI_Base hero)
+        private static float Wdamage(AIHeroClient hero)
         {
             return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
              new[] { 0, 80, 135, 190, 245, 300 }[W.Level] + (Player.Instance.TotalHeal * 0.15f));
         }
 
-        private static float Edamage(Obj_AI_Base hero)
+        private static float Edamage(AIHeroClient hero)
         {
             return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
              new[] { 0, 30, 45, 60, 75, 90 }[E.Level] + (Player.Instance.TotalMagicalDamage * 0.35f));
         }
 
-        private static float Rdamage(Obj_AI_Base hero)
+        private static float Rdamage(AIHeroClient hero)
         {
             return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
              new[] { 0, 150, 250, 350 }[R.Level] + (Player.Instance.TotalMagicalDamage * 0.7f));
