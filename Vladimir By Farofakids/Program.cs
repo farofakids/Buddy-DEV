@@ -16,12 +16,11 @@ namespace Vladimir_By_Farofakids
 {
     class Program
     {
-        private static Menu Menu, comboMenu, harassMenu, farmMenu, ksMenu, miscMenu, drawMenu;
+        private static Menu Menu, comboMenu, harassMenu, farmMenu, ksMenu, miscMenu, drawMenu, fleeMenu;
         private static Spell.Targeted Q;
         private static Spell.Active W;
         private static Spell.Active E;
         private static Spell.Skillshot R;
-        private static List<string> MenuSpells = new List<string>();
 
         static void Main(string[] args)
         {
@@ -36,7 +35,7 @@ namespace Vladimir_By_Farofakids
             W = new Spell.Active(SpellSlot.W, 350);
             E = new Spell.Active(SpellSlot.E, 600);
             R = new Spell.Skillshot(SpellSlot.R, 700, SkillShotType.Circular, 250, 1200, 150);
-            R.AllowedCollisionCount = 0; //R.MinimumHitChance = HitChance.Medium;
+            R.AllowedCollisionCount = 0; R.MinimumHitChance = HitChance.Medium;
 
             MENU();
             Gapcloser.OnGapcloser += Gapcloser_OnGapcloser;
@@ -80,12 +79,18 @@ namespace Vladimir_By_Farofakids
             ksMenu.Add("useQ", new CheckBox("Use Q"));
             ksMenu.Add("useW", new CheckBox("Use W"));
             ksMenu.Add("useE", new CheckBox("Use E"));
-            ksMenu.Add("useR", new CheckBox("Use R"));
+            ksMenu.Add("useR", new CheckBox("Use R", false));
 
             //misc
             miscMenu = Menu.AddSubMenu("Misc Settings", "Misc");
             miscMenu.AddLabel(":: MISC SETTINGS ::");
             miscMenu.Add("useWgap", new CheckBox("Use W on enemy gapcloser"));
+
+            //flee
+            fleeMenu = Menu.AddSubMenu("Flee Settings", "Flee");
+            fleeMenu.AddLabel(":: FLEE SETTINGS ::");
+            fleeMenu.Add("useQ", new CheckBox("Use Q"));
+            fleeMenu.Add("useW", new CheckBox("Use W"));
 
             //draw
             drawMenu = Menu.AddSubMenu("Draw Settings", "Draw");
@@ -125,6 +130,7 @@ namespace Vladimir_By_Farofakids
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo)) Combo();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass)) Harass();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) LaneClear();
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee)) Flee();
             KillSteal();
         }
 
@@ -135,7 +141,7 @@ namespace Vladimir_By_Farofakids
 
             if (miscMenu["useWgap"].Cast<CheckBox>().CurrentValue && W.IsReady()
                 && e.Sender.Distance(Player.Instance) < W.Range
-                && Player.Instance.CountEnemiesInRange(Q.Range) >= 1)
+                && Player.Instance.CountEnemiesInRange(W.Range) >= 1)
             {
                 W.Cast();
             }
@@ -205,6 +211,7 @@ namespace Vladimir_By_Farofakids
 
         private static void Combo()
         {
+            try { 
             var target = TargetSelector.GetTarget(700, DamageType.Magical);
             if (target == null) return;
 
@@ -240,8 +247,14 @@ namespace Vladimir_By_Farofakids
                     }
                 }
             }
-
             AreaOfEffectUltimate();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Chat.Print(
+                    "<font color='#23ADDB'>Marksman AIO:</font><font color='#E81A0C'> an error ocurred. (Code MENU)</font>");
+            }
         }
 
         private static void Harass()
@@ -274,7 +287,7 @@ namespace Vladimir_By_Farofakids
                 var minion =
                     EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, Q.Range)
                     .FirstOrDefault(
-                        x => Player.Instance.GetSpellDamage(x, SpellSlot.Q)/*Qdamage(x)*/ > x.Health);
+                        x => Qdamage(x) > x.Health);
 
                 if (minion != null)
                 {
@@ -298,58 +311,80 @@ namespace Vladimir_By_Farofakids
                 }
             }
         }
+
+        private static void Flee()
+        {
+            var target = TargetSelector.GetTarget(700, DamageType.Magical);
+            if (target == null) return;
+
+
+            if (fleeMenu["useQ"].Cast<CheckBox>().CurrentValue && Q.IsReady()
+               && target.IsValidTarget(Q.Range))
+            {
+                Q.Cast(target);
+            }
+
+            if (fleeMenu["useW"].Cast<CheckBox>().CurrentValue && W.IsReady()
+               && target.IsValidTarget(W.Range))
+            {
+                W.Cast();
+            }
+        }
         #endregion MODES
 
         #region DAMAGE
 
-        private static float DamageToUnit(AIHeroClient hero)
+        private static float Qdamage(Obj_AI_Base hero)
         {
-            float dmg = 0;
+            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
+             new [] { 0, 80, 100, 120, 140, 160 }[Q.Level] + (Player.Instance.TotalMagicalDamage * 0.45f));
+        }
 
-            if (hero == null) return dmg;
+        private static float Wdamage(Obj_AI_Base hero)
+        {
+            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
+             new[] { 0, 80, 135, 190, 245, 300 }[W.Level] + (Player.Instance.Health * 0.15f));
+        }
+
+        private static float Edamage(Obj_AI_Base hero)
+        {
+            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
+             new [] { 0, 30, 45, 60, 75, 90 }[E.Level] + (Player.Instance.TotalMagicalDamage * 0.35f));
+        }
+
+        private static float Rdamage(Obj_AI_Base hero)
+        {
+            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
+             new [] { 0, 150, 250, 350 }[R.Level] + (Player.Instance.TotalMagicalDamage * 0.7f));
+        }
+
+        private static float DamageToUnit(Obj_AI_Base target)
+        {
+            var totaldamage = 0f;
+
+            if (target == null) return totaldamage;
 
             if (Q.IsReady())
             {
-                dmg += Qdamage(hero);
+                totaldamage += Qdamage(target);
             }
+
             if (W.IsReady())
             {
-                dmg += Wdamage(hero);
+                totaldamage = Wdamage(target);
             }
+
             if (E.IsReady())
             {
-                dmg += Edamage(hero);
+                totaldamage += Edamage(target);
             }
+
             if (R.IsReady())
             {
-                dmg += Rdamage(hero);
+                totaldamage += Rdamage(target);
             }
 
-            return dmg;
-        }
-
-        private static float Qdamage(AIHeroClient hero)
-        {
-            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
-             new[] { 0, 80, 100, 120, 140, 160 }[Q.Level] + (Player.Instance.TotalMagicalDamage * 0.45f));
-        }
-
-        private static float Wdamage(AIHeroClient hero)
-        {
-            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
-             new[] { 0, 80, 135, 190, 245, 300 }[W.Level] + (Player.Instance.TotalHeal * 0.15f));
-        }
-
-        private static float Edamage(AIHeroClient hero)
-        {
-            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
-             new[] { 0, 30, 45, 60, 75, 90 }[E.Level] + (Player.Instance.TotalMagicalDamage * 0.35f));
-        }
-
-        private static float Rdamage(AIHeroClient hero)
-        {
-            return Player.Instance.CalculateDamageOnUnit(hero, DamageType.Magical,
-             new[] { 0, 150, 250, 350 }[R.Level] + (Player.Instance.TotalMagicalDamage * 0.7f));
+            return totaldamage;
         }
         #endregion DAMAGE
 
