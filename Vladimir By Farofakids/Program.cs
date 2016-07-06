@@ -85,6 +85,7 @@ namespace Vladimir_By_Farofakids
             miscMenu = Menu.AddSubMenu("Misc Settings", "Misc");
             miscMenu.AddLabel(":: MISC SETTINGS ::");
             miscMenu.Add("useWgap", new CheckBox("Use W on enemy gapcloser"));
+            miscMenu.Add("autoQ", new Slider("Auto Q when Life% <=",60,0,100));
 
             //flee
             fleeMenu = Menu.AddSubMenu("Flee Settings", "Flee");
@@ -132,6 +133,27 @@ namespace Vladimir_By_Farofakids
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) LaneClear();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee)) Flee();
             KillSteal();
+            AutoQ();
+        }
+
+        private static void AutoQ()
+        {
+            if (Player.Instance.HealthPercent > miscMenu["autoQ"].Cast<Slider>().CurrentValue) return;
+            var target = TargetSelector.GetTarget(700, DamageType.Magical);
+            var minions =
+                  EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, Q.Range)
+                  .FirstOrDefault();
+    
+            if (target !=null && Q.IsReady()
+                 && target.IsValidTarget(Q.Range))
+            {
+                Q.Cast(target);
+            }
+            else if (minions != null && Q.IsReady())
+            {
+                Q.Cast(minions);
+            }
+
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
