@@ -19,6 +19,8 @@ namespace Farofakids_Activator
         public static readonly Item Cutlass = new Item(ItemId.Bilgewater_Cutlass);
         public static readonly Item Botrk = new Item(ItemId.Blade_of_the_Ruined_King);
         public static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade);
+        public static readonly Item Tiamat = new Item(ItemId.Tiamat);
+        public static readonly Item Titanic_Hydra = new Item(ItemId.Titanic_Hydra);
         protected static readonly Item Gunblade = new Item(ItemId.Hextech_Gunblade);
         protected static readonly Item ProtoBelt = new Item(ItemId.Will_of_the_Ancients);
         protected static readonly Item GLP = new Item(3030);
@@ -165,7 +167,6 @@ namespace Farofakids_Activator
             Chat.Print("Farofakids-Activator: ITENS Loaded", System.Drawing.Color.HotPink);
 
             Game.OnUpdate += Game_OnUpdate;
-            Orbwalker.OnPostAttack += OnPostAttack;
         }
 
         private static void Game_OnUpdate(EventArgs args)
@@ -349,22 +350,8 @@ namespace Farofakids_Activator
             }
 
             #endregion Hextech
+
         }
 
-        private static void OnPostAttack(AttackableUnit target, EventArgs args)
-        {
-            if (!target.IsEnemy || target.IsZombie) return;
-            if (UseTiamat)
-            {
-                InventorySlot[] inv = Player.Instance.InventoryItems;
-                foreach (var item in inv)
-                {
-                    if ((item.Id == ItemId.Tiamat_Melee_Only || item.Id == ItemId.Ravenous_Hydra_Melee_Only || item.Id == ItemId.Titanic_Hydra) && item.CanUseItem() && Player.Instance.CountEnemiesInRange(400) > 0)
-                    {
-                        item.Cast();
-                    }
-                }
-            }
-        }
     }
 }

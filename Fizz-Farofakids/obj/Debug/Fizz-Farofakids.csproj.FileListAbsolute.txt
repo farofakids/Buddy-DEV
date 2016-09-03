@@ -10,3 +10,6 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\EloBuddy.SDK
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\SharpDX.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Fizz-Farofakids\bin\Debug\Ziggs-Farofakids.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Fizz-Farofakids\obj\Debug\Ziggs-Farofakids.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Fizz-Farofakids\obj\Debug\Ziggs-Farofakids.pdb

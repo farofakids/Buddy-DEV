@@ -21,3 +21,6 @@ C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.dl
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.SDK.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\SharpDX.dll
 C:\Users\Bruno\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Swain\bin\Debug\Farofakids-Swain.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Swain\obj\Debug\Farofakids-Swain.exe
+C:\Users\Bruno_PC\Documents\GitHub\Buddy-dev\Farofakids-Swain\obj\Debug\Farofakids-Swain.pdb
